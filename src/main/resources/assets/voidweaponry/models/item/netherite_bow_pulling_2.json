@@ -1,0 +1,6 @@
+{
+  "parent": "voidweaponry:item/netherite_bow",
+  "textures": {
+    "layer0": "voidweaponry:item/netherite_bow_pulling_2"
+  }
+}

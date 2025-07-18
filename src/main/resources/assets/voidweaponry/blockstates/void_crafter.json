@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "voidweaponry:block/void_crafter", "y": 0 },
+    "facing=east":  { "model": "voidweaponry:block/void_crafter", "y": 90 },
+    "facing=south": { "model": "voidweaponry:block/void_crafter", "y": 180 },
+    "facing=west":  { "model": "voidweaponry:block/void_crafter", "y": 270 }
+  }
+}

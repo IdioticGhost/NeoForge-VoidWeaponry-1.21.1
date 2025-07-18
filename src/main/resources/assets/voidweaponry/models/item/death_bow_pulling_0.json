@@ -1,0 +1,6 @@
+{
+  "parent": "voidweaponry:item/death_bow",
+  "textures": {
+    "layer0": "voidweaponry:item/death_bow_pulling_0"
+  }
+}

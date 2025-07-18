@@ -1,0 +1,103 @@
+{
+  "item.voidweaponry.dragon_bone": "Dragon Bone",
+  "item.voidweaponry.dragon_scale": "Dragon Scale",
+  "item.voidweaponry.void_shard": "Void Shard",
+  "item.voidweaponry.voidbound_gold": "Voidbound Gold",
+  "item.voidweaponry.void_kelp": "Void Kelp",
+  "item.voidweaponry.cooked_void_kelp": "Dried Void Kelp",
+  "item.voidweaponry.void_catalyst": "§6Void Catalyst",
+
+  "item.voidweaponry.voidgold_sword": "§5Voidgold Sword",
+  "item.voidweaponry.voidgold_pickaxe": "§5Voidgold Pickaxe",
+  "item.voidweaponry.voidgold_axe": "§5Voidgold Axe",
+  "item.voidweaponry.voidgold_shovel": "§5Voidgold Shovel",
+  "item.voidweaponry.voidgold_hoe": "§5Voidgold Hoe",
+  "item.voidweaponry.netherite_bow": "§5Netherite Bow",
+  "item.voidweaponry.void_multitool": "§6Void Multitool",
+
+  "item.voidweaponry.chisel": "Chisel",
+
+  "item.voidweaponry.voidgold_helmet": "§5Voidgold Helmet",
+  "item.voidweaponry.voidgold_chestplate": "§5Voidgold Chestplate",
+  "item.voidweaponry.voidgold_leggings": "§5Voidgold Leggings",
+  "item.voidweaponry.voidgold_boots": "§5Voidgold Boots",
+  "item.voidweaponry.voidgold_smithing_template": "Smithing Template",
+  "tooltip.voidweaponry.voidgold_smithing_template_1.tooltip": "§7Voidgold Upgrade",
+  "tooltip.voidweaponry.voidgold_smithing_template_2.tooltip": "",
+  "tooltip.voidweaponry.voidgold_smithing_template_3.tooltip": "§7Applies to:",
+  "tooltip.voidweaponry.voidgold_smithing_template_4.tooltip": " §9Netherite Equipment",
+  "tooltip.voidweaponry.voidgold_smithing_template_5.tooltip": "§7Ingredients:",
+  "tooltip.voidweaponry.voidgold_smithing_template_6.tooltip": " §9Voidbound Gold",
+
+  "tooltip.voidweaponry.voidgold_armor_1.tooltip": "§6Full Set Bonus: Purified§r",
+  "tooltip.voidweaponry.voidgold_armor_2.tooltip": "§7Gain §aSpeed §7and §aMiasma Resistance",
+  "tooltip.voidweaponry.voidgold_armor_3.tooltip": "§7while in the Void.§r",
+
+  "item.voidweaponry.death_bow_item": "§6Death Bow",
+
+  "block.voidweaponry.endstone_sand_block": "End Stone Sand",
+  "block.voidweaponry.void_kelp_block": "Dried Void Kelp Block",
+  "block.voidweaponry.void_ore": "Voidshard Ore",
+
+  "block.voidweaponry.voidgrowth_planks": "Shadowpine Planks",
+  "block.voidweaponry.voidgrowth_stairs": "Shadowpine Stairs",
+  "block.voidweaponry.voidgrowth_slab": "Shadowpine Slab",
+  "block.voidweaponry.voidgrowth_pressure_plate": "Shadowpine Pressure Plate",
+  "block.voidweaponry.voidgrowth_button": "Shadowpine Button",
+  "block.voidweaponry.voidgrowth_fence": "Shadowpine Fence",
+  "block.voidweaponry.voidgrowth_fence_gate": "Shadowpine Fence Gate",
+  "block.voidweaponry.voidgrowth_door": "Shadowpine Door",
+  "block.voidweaponry.voidgrowth_trapdoor": "Shadowpine Trapdoor",
+
+  "block.voidweaponry.shadow_pine_log": "Shadowpine Log",
+  "block.voidweaponry.shadow_pine_wood": "Shadowpine Wood",
+  "block.voidweaponry.stripped_shadow_pine_log": "Stripped Shadowpine Log",
+  "block.voidweaponry.stripped_shadow_pine_wood": "Stripped Shadowpine Wood",
+  "block.voidweaponry.shadow_pine_leaves": "Shadowpine Leaves",
+  "block.voidweaponry.shadow_pine_sapling": "Shadowpine Sappling",
+  "block.voidweaponry.gnarled_shadow_pine": "Gnarled Shadowpine",
+
+  "block.voidweaponry.void_lantern": "§5Void Lantern",
+
+  "block.voidweaponry.void_crafter": "Deepvoid Searcher",
+  "block.voidweaponry.pedestal": "PEDESTAL",
+
+  "tooltip.voidweaponry.void_lantern_1.tooltip": "§6Item Ability: Haven§r",
+  "tooltip.voidweaponry.void_lantern_2.tooltip": "§7Shields against Void Miasma.",
+  "tooltip.voidweaponry.void_lantern_3.tooltip": "§8Press [SHIFT] for more information.",
+
+  "tooltip.voidweaponry.void_lantern_shift_down_1.tooltip": "§7Radius: 6 Blocks",
+  "tooltip.voidweaponry.void_lantern_shift_down_2.tooltip": "§7Lasts: 15s",
+
+  "tooltip.voidweaponry.voidgold_sword_1.tooltip": "§6Item Ability: Corrupted Strength",
+  "tooltip.voidweaponry.voidgold_sword_2.tooltip": "§7Grants §aStrength §7while in the Void.",
+
+  "tooltip.voidweaponry.voidgold_tools_1.tooltip": "§6Item Ability: Corrupted Haste",
+  "tooltip.voidweaponry.voidgold_tools_2.tooltip": "§7Grants §aHaste §7while in the Void.",
+
+  "tooltip.voidweaponry.void_multitool_1.tooltip": "§6Item Ability: Purified Haste",
+  "tooltip.voidweaponry.void_multitool_2.tooltip": "§7Grants §aHaste§7.",
+
+  "effect.voidweaponry.void_miasma": "Void Miasma",
+  "effect.voidweaponry.miasma_resistance": "Miasma Resistance",
+  "effect.voidweaponry.miasma_shielded": "Shielded",
+  "effect.voidweaponry.unkillable": "Unkillable",
+
+  "enchantments.voidweaponry.strength_rune": "Strength Rune",
+
+  "creativetab.voidweaponry.void_misc_tab": "Void's Oddities",
+  "creativetab.voidweaponry.void_weapons_tab": "Void's Arsenal'",
+
+  "item.voidweaponry.death_bow": "§6Death Bow",
+  "tooltip.voidweaponry.death_bow_1.tooltip": "§8[]     []     []",
+  "tooltip.voidweaponry.death_bow_2.tooltip": "",
+  "tooltip.voidweaponry.death_bow_3.tooltip": "§6Passive: Bring It Down",
+  "tooltip.voidweaponry.death_bow_4.tooltip": "§7Every third hit, apply an additional",
+  "tooltip.voidweaponry.death_bow_5.tooltip": "§f[5% Enemy Max HP] §7as true damage,",
+  "tooltip.voidweaponry.death_bow_6.tooltip": "§7with stacks dropping after 7 seconds.",
+  "tooltip.voidweaponry.death_bow_7.tooltip": "",
+  "tooltip.voidweaponry.death_bow_8.tooltip": "§6Active: True Respite",
+  "tooltip.voidweaponry.death_bow_9.tooltip": "§7Create an area in which no entity can fall below 10% HP.",
+  "tooltip.voidweaponry.death_bow_10.tooltip": "§3100 Mana",
+  "tooltip.voidweaponry.death_bow_11.tooltip": "§c60s Cooldown"
+}
