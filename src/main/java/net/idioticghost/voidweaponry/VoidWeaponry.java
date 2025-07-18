@@ -1,11 +1,29 @@
 package net.idioticghost.voidweaponry;
 
 import net.idioticghost.voidweaponry.block.ModBlocks;
+import net.idioticghost.voidweaponry.block.entity.ModBlockEntities;
+import net.idioticghost.voidweaponry.block.entity.client.VoidCrafterRenderer;
+import net.idioticghost.voidweaponry.effect.ModEffects;
+import net.idioticghost.voidweaponry.entity.ModEntities;
+import net.idioticghost.voidweaponry.entity.custom.DeathArrowEntityHitInfo;
+import net.idioticghost.voidweaponry.entity.renderer.DeathArrowRenderer;
 import net.idioticghost.voidweaponry.item.ModCreativeModeTabs;
 import net.idioticghost.voidweaponry.item.ModItems;
+import net.idioticghost.voidweaponry.particle.ModParticles;
+import net.idioticghost.voidweaponry.particle.custom.GoldParticles;
+import net.idioticghost.voidweaponry.particle.custom.VoidWatcherParticles;
+import net.idioticghost.voidweaponry.screen.ModMenuTypes;
+import net.idioticghost.voidweaponry.screen.custom.VoidCrafterScreen;
+import net.idioticghost.voidweaponry.util.ModItemProperties;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -19,6 +37,10 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -40,16 +62,28 @@ public class VoidWeaponry {
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
-
         ModCreativeModeTabs.register(modEventBus);
+
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        ModBlockEntities.register(modEventBus);
+
+        ModEffects.register(modEventBus);
+
+        ModMenuTypes.register(modEventBus);
+        ModParticles.register(modEventBus);
+        ModEntities.register(modEventBus);
 
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+    }
+
+    public class DeathArrowTracker {
+        public static final Map<UUID, Map<UUID, DeathArrowEntityHitInfo>> HIT_MAP = new HashMap<>();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -68,11 +102,36 @@ public class VoidWeaponry {
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = MOD_ID)
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.VOID_LANTERN.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.VOID_KELP_CROP.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.VOID_CRAFTER.get(), RenderType.translucent());
+            ModItemProperties.addCustomItemProperties();
 
+        }
+
+        @SubscribeEvent
+        public static void registerParticleProvider(RegisterParticleProvidersEvent event) {
+            event.registerSpriteSet(ModParticles.VOID_WATCHER_PARTICLES.get(), VoidWatcherParticles.Provider::new);
+            event.registerSpriteSet(ModParticles.GOLD_PARTICLES.get(), GoldParticles.Provider::new);
+        }
+
+        @SubscribeEvent
+        public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerBlockEntityRenderer(ModBlockEntities.VOID_CRAFTER_BE.get(), VoidCrafterRenderer::new);
+        }
+
+        @SubscribeEvent
+        public static void registerScreens(RegisterMenuScreensEvent event) {
+            event.register(ModMenuTypes.VOID_CRAFTER_MENU.get(), VoidCrafterScreen::new);
+        }
+
+        @SubscribeEvent
+        public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerEntityRenderer(ModEntities.DEATH_ARROW.get(), DeathArrowRenderer::new);
         }
     }
 }

@@ -85,8 +85,8 @@
 
   "enchantments.voidweaponry.strength_rune": "Strength Rune",
 
-  "creativetab.voidweaponry.void_misc_tab": "Void's Oddities",
-  "creativetab.voidweaponry.void_weapons_tab": "Void's Arsenal'",
+  "creativetab.voidweaponry.void_misc_tab": "§6Void's Oddities",
+  "creativetab.voidweaponry.void_weapons_tab": "§6Void's Arsenal",
 
   "item.voidweaponry.death_bow": "§6Death Bow",
   "tooltip.voidweaponry.death_bow_1.tooltip": "§8[]     []     []",
