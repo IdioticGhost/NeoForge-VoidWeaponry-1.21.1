@@ -2,6 +2,8 @@ package net.idioticghost.voidweaponry.worldgen;
 
 import net.idioticghost.voidweaponry.VoidWeaponry;
 import net.idioticghost.voidweaponry.block.ModBlocks;
+import net.idioticghost.voidweaponry.worldgen.plant.VoidKelpFeature;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -11,6 +13,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
@@ -28,6 +31,7 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SHADOW_PINE_KEY = registerKey("shadow_pine");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> VOID_KELP_KEY = registerKey("void_kelp");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest voidReplaceables = new BlockMatchTest(Blocks.END_STONE);
@@ -45,9 +49,12 @@ public class ModConfiguredFeatures {
                 new MegaPineFoliagePlacer(ConstantInt.of(3), ConstantInt.of(3), ConstantInt.of(3)),
                 new TwoLayersFeatureSize(1, 0, 2)
         ).build());
+
+        context.register(
+                VOID_KELP_KEY,
+                new ConfiguredFeature<>(ModFeatures.VOID_KELP.get(), NoneFeatureConfiguration.INSTANCE));
+
     }
-
-
 
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {

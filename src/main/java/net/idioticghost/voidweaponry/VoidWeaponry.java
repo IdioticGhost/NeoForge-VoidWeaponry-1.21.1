@@ -15,10 +15,9 @@ import net.idioticghost.voidweaponry.particle.custom.VoidWatcherParticles;
 import net.idioticghost.voidweaponry.screen.ModMenuTypes;
 import net.idioticghost.voidweaponry.screen.custom.VoidCrafterScreen;
 import net.idioticghost.voidweaponry.util.ModItemProperties;
-import net.minecraft.client.gui.screens.MenuScreens;
+import net.idioticghost.voidweaponry.worldgen.ModFeatures;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -74,6 +73,9 @@ public class VoidWeaponry {
         ModMenuTypes.register(modEventBus);
         ModParticles.register(modEventBus);
         ModEntities.register(modEventBus);
+
+        ModFeatures.FEATURES.register(modEventBus);
+
 
 
         // Register the item to a creative tab

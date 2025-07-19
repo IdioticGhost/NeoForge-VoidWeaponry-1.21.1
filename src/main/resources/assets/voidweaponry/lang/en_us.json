@@ -54,7 +54,7 @@
   "block.voidweaponry.stripped_shadow_pine_log": "Stripped Shadowpine Log",
   "block.voidweaponry.stripped_shadow_pine_wood": "Stripped Shadowpine Wood",
   "block.voidweaponry.shadow_pine_leaves": "Shadowpine Leaves",
-  "block.voidweaponry.shadow_pine_sapling": "Shadowpine Sappling",
+  "block.voidweaponry.shadow_pine_sapling": "Shadowpine Sapling",
   "block.voidweaponry.gnarled_shadow_pine": "Gnarled Shadowpine",
 
   "block.voidweaponry.void_lantern": "§5Void Lantern",
@@ -85,8 +85,8 @@
 
   "enchantments.voidweaponry.strength_rune": "Strength Rune",
 
-  "creativetab.voidweaponry.void_misc_tab": "§6Void's Oddities",
-  "creativetab.voidweaponry.void_weapons_tab": "§6Void's Arsenal",
+  "creativetab.voidweaponry.void_misc_tab": "§8Void's Oddities",
+  "creativetab.voidweaponry.void_weapons_tab": "§8Void's Arsenal",
 
   "item.voidweaponry.death_bow": "§6Death Bow",
   "tooltip.voidweaponry.death_bow_1.tooltip": "§8[]     []     []",

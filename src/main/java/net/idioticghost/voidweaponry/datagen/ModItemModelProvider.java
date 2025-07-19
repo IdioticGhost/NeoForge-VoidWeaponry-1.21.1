@@ -47,7 +47,7 @@ public class ModItemModelProvider extends net.neoforged.neoforge.client.model.ge
         basicItem(ModItems.VOID_SHARD.get());
         basicItem(ModItems.VOIDBOUND_GOLD.get());
         basicItem(ModItems.VOID_KELP.get());
-        //basicItem(ModItems.COOKED_VOID_KELP.get());
+        basicItem(ModItems.COOKED_VOID_KELP.get());
         basicItem(ModItems.VOID_CATALYST.get());
         basicItem(ModItems.VOIDGOLD_SMITHING_TEMPLATE.get());
 

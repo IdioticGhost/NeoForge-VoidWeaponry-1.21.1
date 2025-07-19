@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.KelpPlantBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 
@@ -54,7 +55,7 @@ public class VoidKelpCrop extends KelpPlantBlock {
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockState below = level.getBlockState(pos.below());
-        return below.is(net.idioticghost.voidweaponry.block.ModBlocks.VOID_KELP_CROP.get()) || below.is(net.idioticghost.voidweaponry.block.ModBlocks.VOID_KELP_TOP.get()) || below.is(ModBlocks.ENDSTONE_SAND_BLOCK.get());
+        return below.is(net.idioticghost.voidweaponry.block.ModBlocks.VOID_KELP_CROP.get()) || below.is(net.idioticghost.voidweaponry.block.ModBlocks.VOID_KELP_TOP.get()) || below.is(ModBlocks.ENDSTONE_SAND_BLOCK.get()) || below.is(Blocks.SAND);
     }
 
 
@@ -62,8 +63,5 @@ public class VoidKelpCrop extends KelpPlantBlock {
     protected GrowingPlantHeadBlock getHeadBlock() {
         return (GrowingPlantHeadBlock) ModBlocks.VOID_KELP_TOP.get();
     }
-
-
-
 }
 

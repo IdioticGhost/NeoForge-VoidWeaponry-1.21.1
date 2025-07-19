@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
@@ -47,7 +48,7 @@ public class VoidKelpTopBlock extends GrowingPlantHeadBlock {
 
     @Override
     protected boolean canAttachTo(BlockState state) {
-        return state.is(ModBlocks.ENDSTONE_SAND_BLOCK.get()) || state.is(ModBlocks.VOID_KELP_TOP.get()) || state.is(ModBlocks.VOID_KELP_CROP.get());
+        return state.is(ModBlocks.ENDSTONE_SAND_BLOCK.get()) || state.is(ModBlocks.VOID_KELP_TOP.get()) || state.is(ModBlocks.VOID_KELP_CROP.get()) || state.is(Blocks.SAND);
     }
 
     @Override

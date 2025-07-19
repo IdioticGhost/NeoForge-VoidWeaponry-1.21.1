@@ -18,6 +18,8 @@ public class ModBiomeModifiers {
 
     public static final ResourceKey<BiomeModifier> ADD_SHADOW_PINE_TREE = registerKey("add_tree_shadow_pine");
 
+    public static final ResourceKey<BiomeModifier> ADD_VOID_KELP = registerKey("add_void_kelp");
+
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeature = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
@@ -30,6 +32,11 @@ public class ModBiomeModifiers {
         context.register(ADD_SHADOW_PINE_TREE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.PLAINS)),
                 HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.SHADOW_PINE_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_VOID_KELP, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.DESERT)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.VOID_KELP_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
     }

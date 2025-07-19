@@ -10,11 +10,10 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
@@ -22,6 +21,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> VOID_ORE_PLACED_KEY = registerKey("void_ore_placed");
 
     public static final ResourceKey<PlacedFeature> SHADOW_PINE_PLACED_KEY = registerKey("shadow_pine_placed");
+
+    public static final ResourceKey<PlacedFeature> VOID_KELP_PLACED_KEY = registerKey("void_kelp_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -33,7 +34,19 @@ public class ModPlacedFeatures {
         register(context,SHADOW_PINE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.SHADOW_PINE_KEY),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(10, 0.1f, 1),
                     ModBlocks.SHADOW_PINE_SAPLING.get()));
+
+
+        register(context, VOID_KELP_PLACED_KEY,
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.VOID_KELP_KEY),
+                List.of(
+                        CountPlacement.of(5),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                ));
     }
+
+
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(VoidWeaponry.MOD_ID, name));
