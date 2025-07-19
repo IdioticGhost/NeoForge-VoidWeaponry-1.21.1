@@ -35,7 +35,7 @@ public class VoidCrafterScreen extends AbstractContainerScreen<VoidCrafterMenu> 
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(ARROW_TEXTURE,x + 87, y + 34, 0, 0, menu.getScaledArrowProgress(), 16, 24, 16);
+            guiGraphics.blit(ARROW_TEXTURE,x + 82, y + 35, 0, 0, menu.getScaledArrowProgress(), 17, 34, 17);
         }
     }
 
@@ -43,5 +43,12 @@ public class VoidCrafterScreen extends AbstractContainerScreen<VoidCrafterMenu> 
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
         super.render(guiGraphics, mouseX, mouseY, delta);
         renderTooltip(guiGraphics, mouseX, mouseY);
+    }
+
+    @Override
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        guiGraphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY - 2, 0x404040, false);
+
+        guiGraphics.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY + 1, 0x404040, false);
     }
 }

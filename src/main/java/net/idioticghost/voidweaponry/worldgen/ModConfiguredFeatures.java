@@ -2,8 +2,6 @@ package net.idioticghost.voidweaponry.worldgen;
 
 import net.idioticghost.voidweaponry.VoidWeaponry;
 import net.idioticghost.voidweaponry.block.ModBlocks;
-import net.idioticghost.voidweaponry.worldgen.plant.VoidKelpFeature;
-import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;

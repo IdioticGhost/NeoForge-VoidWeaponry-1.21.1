@@ -15,8 +15,8 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 
 public class VoidKelpFeature extends Feature<NoneFeatureConfiguration> {
 
-    private static final int MIN_HEIGHT = 2;
-    private static final int MAX_HEIGHT = 6;
+    private static final int MIN_HEIGHT = 10;
+    private static final int MAX_HEIGHT = 16;
 
     public VoidKelpFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);

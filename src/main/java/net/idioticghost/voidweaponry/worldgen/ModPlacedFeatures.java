@@ -39,7 +39,7 @@ public class ModPlacedFeatures {
         register(context, VOID_KELP_PLACED_KEY,
                 configuredFeatures.getOrThrow(ModConfiguredFeatures.VOID_KELP_KEY),
                 List.of(
-                        CountPlacement.of(5),
+                        CountPlacement.of(7),
                         InSquarePlacement.spread(),
                         PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                         BiomeFilter.biome()
