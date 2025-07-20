@@ -1,6 +1,7 @@
 package net.idioticghost.voidweaponry.worldgen;
 
 import net.idioticghost.voidweaponry.VoidWeaponry;
+import net.idioticghost.voidweaponry.worldgen.biome.ModBiomes;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -20,6 +21,10 @@ public class ModBiomeModifiers {
 
     public static final ResourceKey<BiomeModifier> ADD_VOID_KELP = registerKey("add_void_kelp");
 
+    public static final ResourceKey<BiomeModifier> ADD_VOID_SEAGRASS = registerKey("add_void_seagrass");
+
+    public static final ResourceKey<BiomeModifier> ADD_NAUTILUS_SHELL = registerKey("add_nautilus_shell");
+
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeature = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
@@ -35,8 +40,18 @@ public class ModBiomeModifiers {
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
         context.register(ADD_VOID_KELP, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(biomes.getOrThrow(Biomes.DESERT)),
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.DRIED_DEPTHS)),
                 HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.VOID_KELP_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_VOID_SEAGRASS, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.DRIED_DEPTHS)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.VOID_SEAGRASS_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_NAUTILUS_SHELL, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.DRIED_DEPTHS)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.NAUTILUS_SHELL_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
     }

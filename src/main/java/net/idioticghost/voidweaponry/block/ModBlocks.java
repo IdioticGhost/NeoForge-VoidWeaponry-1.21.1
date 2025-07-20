@@ -156,6 +156,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> VOID_KELP_CROP = BLOCKS.register("void_kelp_crop",
             () -> new VoidKelpCrop());
 
+    public static final DeferredBlock<Block> VOID_SEAGRASS = BLOCKS.register("void_seagrass",
+            () -> new VoidSeagrass());
+
     public static final DeferredBlock<Block> VOID_KELP_TOP = BLOCKS.register("void_kelp_top",
             () -> new VoidKelpTopBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.COLOR_PURPLE) // or MapColor.WATER if you want blue
@@ -166,6 +169,9 @@ public class ModBlocks {
                     .pushReaction(PushReaction.DESTROY)
             )
     );
+
+    public static final DeferredBlock<Block> NAUTILUS_SHELL_BLOCK = registerBlock("nautilus_shell_block",
+            () -> new NautilusShellBlock(BlockBehaviour.Properties.of().noOcclusion()));
 
     //MACHINES
 

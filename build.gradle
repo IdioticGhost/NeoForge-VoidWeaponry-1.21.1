@@ -24,6 +24,7 @@ repositories {
         content {
             includeGroup("software.bernie.geckolib")
         }
+        maven { url = 'https://maven.minecraftforge.net/' }
     }
 }
 
@@ -119,6 +120,7 @@ configurations {
 
 dependencies {
     implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
+    implementation "com.github.glitchfiend:TerraBlender-neoforge:${minecraft_version}-4.1.0.8"
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
@@ -155,7 +157,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_license            : mod_license,
             mod_version            : mod_version,
             mod_authors            : mod_authors,
-            mod_description        : mod_description
+            mod_description        : mod_description,
     ]
     inputs.properties replaceProperties
     expand replaceProperties

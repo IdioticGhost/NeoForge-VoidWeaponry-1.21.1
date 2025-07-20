@@ -16,6 +16,11 @@ import net.idioticghost.voidweaponry.screen.ModMenuTypes;
 import net.idioticghost.voidweaponry.screen.custom.VoidCrafterScreen;
 import net.idioticghost.voidweaponry.util.ModItemProperties;
 import net.idioticghost.voidweaponry.worldgen.ModFeatures;
+import net.idioticghost.voidweaponry.worldgen.biome.ModTerrablender;
+import net.idioticghost.voidweaponry.worldgen.biome.surface.ModSurfaceRules;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.color.block.BlockColor;
+import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -36,6 +41,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import terrablender.api.SurfaceRuleManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -75,7 +81,7 @@ public class VoidWeaponry {
         ModEntities.register(modEventBus);
 
         ModFeatures.FEATURES.register(modEventBus);
-
+        ModTerrablender.registerBiomes();
 
 
         // Register the item to a creative tab
@@ -89,7 +95,7 @@ public class VoidWeaponry {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());
     }
 
     // Add the example block item to the building blocks tab
@@ -110,9 +116,9 @@ public class VoidWeaponry {
         public static void onClientSetup(FMLClientSetupEvent event) {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.VOID_LANTERN.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.VOID_KELP_CROP.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.VOID_SEAGRASS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.VOID_CRAFTER.get(), RenderType.translucent());
             ModItemProperties.addCustomItemProperties();
-
         }
 
         @SubscribeEvent

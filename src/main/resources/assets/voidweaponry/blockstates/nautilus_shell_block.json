@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "voidweaponry:block/nautilus_shell_block"
+    },
+    "facing=south": {
+      "model": "voidweaponry:block/nautilus_shell_block",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "voidweaponry:block/nautilus_shell_block",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "voidweaponry:block/nautilus_shell_block",
+      "y": 270
+    }
+  }
+}

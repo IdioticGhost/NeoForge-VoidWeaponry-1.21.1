@@ -8,6 +8,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
@@ -57,11 +58,20 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                         )
         );
 
+
         this.add(ModBlocks.VOID_KELP_TOP.get(),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem.lootTableItem(ModItems.VOID_KELP.get()))
+                        )
+        );
+
+        this.add(ModBlocks.VOID_SEAGRASS.get(),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.VOID_SEAGRASS_HELD.get()))
                         )
         );
 
@@ -74,6 +84,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         this.add(ModBlocks.SHADOW_PINE_LEAVES.get(), block ->
                 createLeavesDrops(block, ModBlocks.SHADOW_PINE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+
+        this.add(ModBlocks.NAUTILUS_SHELL_BLOCK.get(),
+                createSingleItemTable(Items.NAUTILUS_SHELL));
     }
 
     //THIS IS FOR GENERATING COPPER-ESQUE LOOT TABLES

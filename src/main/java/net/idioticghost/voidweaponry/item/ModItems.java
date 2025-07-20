@@ -49,6 +49,9 @@ public class ModItems {
                 }
             });
 
+    public static final DeferredItem<Item> VOID_SEAGRASS_HELD = ITEMS.register("void_seagrass_held",
+            () -> new ItemNameBlockItem(ModBlocks.VOID_SEAGRASS.get(), new Item.Properties()));
+
     //FOOD
 
     public static final DeferredItem<Item> COOKED_VOID_KELP = ITEMS.register("cooked_void_kelp",

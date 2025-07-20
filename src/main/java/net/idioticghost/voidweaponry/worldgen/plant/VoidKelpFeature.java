@@ -34,13 +34,12 @@ public class VoidKelpFeature extends Feature<NoneFeatureConfiguration> {
             return false;
         }
 
-        // Check if block above ground is free to start placing kelp
         BlockPos start = ground.above();
         if (!level.isEmptyBlock(start)) {
             return false;
         }
 
-        // Random height between MIN and MAX
+
         int height = MIN_HEIGHT + random.nextInt(MAX_HEIGHT - MIN_HEIGHT + 1);
 
         // Place stalk blocks
@@ -50,13 +49,12 @@ public class VoidKelpFeature extends Feature<NoneFeatureConfiguration> {
                 BlockState kelpStalk = ModBlocks.VOID_KELP_CROP.get().defaultBlockState();
                 level.setBlock(pos, kelpStalk, 2);
             } else {
-                // Stop if obstructed mid-way
+
                 if (i == 0) return false;
                 break;
             }
         }
 
-        // Place top block
         BlockPos top = start.above(height - 1);
         if (level.isEmptyBlock(top)) {
             BlockState kelpTop = ModBlocks.VOID_KELP_TOP.get().defaultBlockState();
@@ -66,10 +64,7 @@ public class VoidKelpFeature extends Feature<NoneFeatureConfiguration> {
         return true;
     }
 
-    /**
-     * Find the first non-air block below the origin, suitable for kelp.
-     * We want sand, dirt, or stone-like surfaces (customize here).
-     */
+
     private BlockPos findGround(WorldGenLevel level, BlockPos pos) {
         BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos().set(pos);
 
@@ -78,7 +73,7 @@ public class VoidKelpFeature extends Feature<NoneFeatureConfiguration> {
         }
 
         BlockState stateBelow = level.getBlockState(mutable);
-        if (stateBelow.is(Blocks.SAND) || stateBelow.is(Blocks.RED_SAND) || stateBelow.is(Blocks.STONE)) {
+        if (stateBelow.is(ModBlocks.ENDSTONE_SAND_BLOCK)) {
             return mutable;
         }
 

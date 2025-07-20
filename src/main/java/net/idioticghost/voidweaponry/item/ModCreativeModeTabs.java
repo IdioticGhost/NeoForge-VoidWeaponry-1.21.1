@@ -43,6 +43,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.SHADOW_PINE_LEAVES.get());
                         output.accept(ModBlocks.SHADOW_PINE_SAPLING.get());
 
+                        output.accept(ModItems.VOID_SEAGRASS_HELD.get());
                         output.accept(ModItems.VOID_KELP.get());
                         output.accept(ModItems.COOKED_VOID_KELP.get());
                         output.accept(ModItems.VOID_SHARD.get());

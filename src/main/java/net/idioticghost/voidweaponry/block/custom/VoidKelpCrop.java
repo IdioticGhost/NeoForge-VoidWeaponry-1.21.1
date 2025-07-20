@@ -23,7 +23,7 @@ public class VoidKelpCrop extends KelpPlantBlock {
                 .sound(SoundType.WET_GRASS)
                 .lightLevel(state -> 0)
                 .noOcclusion()
-                .randomTicks() // if you want it to grow
+                .randomTicks()
         );
     }
 
@@ -34,9 +34,7 @@ public class VoidKelpCrop extends KelpPlantBlock {
             return Blocks.AIR.defaultBlockState();
         }
 
-        // If the block above is gone and this is now the top → become top block
         if (direction == Direction.UP && neighborState.isAir()) {
-            // Replace this block with the head/top block
             level.setBlock(pos, net.idioticghost.voidweaponry.block.ModBlocks.VOID_KELP_TOP.get().defaultBlockState(), 3);
             return net.idioticghost.voidweaponry.block.ModBlocks.VOID_KELP_TOP.get().defaultBlockState();
         }
@@ -44,14 +42,11 @@ public class VoidKelpCrop extends KelpPlantBlock {
         return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
-
-    // Prevent automatic fluid placement
     @Override
     protected FluidState getFluidState(BlockState state) {
         return Fluids.EMPTY.defaultFluidState();
     }
 
-    // Only allow growing on itself or your custom block
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockState below = level.getBlockState(pos.below());

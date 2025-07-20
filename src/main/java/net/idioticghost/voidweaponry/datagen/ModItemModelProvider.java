@@ -50,6 +50,7 @@ public class ModItemModelProvider extends net.neoforged.neoforge.client.model.ge
         basicItem(ModItems.COOKED_VOID_KELP.get());
         basicItem(ModItems.VOID_CATALYST.get());
         basicItem(ModItems.VOIDGOLD_SMITHING_TEMPLATE.get());
+        basicItem(ModItems.VOID_SEAGRASS_HELD.get());
 
         trimmedArmorItem(ModItems.VOIDGOLD_HELMET);
         trimmedArmorItem(ModItems.VOIDGOLD_CHESTPLATE);
