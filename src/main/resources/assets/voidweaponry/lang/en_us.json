@@ -36,7 +36,11 @@
 
   "item.voidweaponry.death_bow_item": "§6Death Bow",
 
+
+  "block.voidweaponry.dead_grass_held": "Forgotten Grass",
+  "block.voidweaponry.short_dead_grass_held": "Short Forgotten Grass",
   "block.voidweaponry.endstone_sand_block": "End Stone Sand",
+  "block.voidweaponry.smooth_endstone": "Smooth End Stone",
   "block.voidweaponry.void_kelp_block": "Dried Void Kelp Block",
   "block.voidweaponry.void_ore": "Voidshard Ore",
 
@@ -55,8 +59,10 @@
   "block.voidweaponry.stripped_shadow_pine_log": "Stripped Shadowpine Log",
   "block.voidweaponry.stripped_shadow_pine_wood": "Stripped Shadowpine Wood",
   "block.voidweaponry.shadow_pine_leaves": "Shadowpine Leaves",
+  "block.voidweaponry.purple_shadow_pine_leaves": "Shadowpine Leaves",
   "block.voidweaponry.shadow_pine_sapling": "Shadowpine Sapling",
   "block.voidweaponry.gnarled_shadow_pine": "Gnarled Shadowpine",
+  "block.voidweaponry.nautilus_shell_block": "Nautilus Shell Block",
 
   "block.voidweaponry.void_lantern": "§5Void Lantern",
 

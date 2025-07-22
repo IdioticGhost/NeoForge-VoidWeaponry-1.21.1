@@ -21,10 +21,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        blockWithItem(ModBlocks.ENDSTONE_SAND_BLOCK);
+        //blockWithItem(ModBlocks.ENDSTONE_SAND_BLOCK);
+        blockWithItem(ModBlocks.SMOOTH_ENDSTONE);
         blockWithItem(ModBlocks.VOID_ORE);
         blockWithItem(ModBlocks.VOID_KELP_BLOCK);
         blockWithItem(ModBlocks.VOIDGROWTH_PLANKS);
+
 
         stairsBlock(ModBlocks.VOIDGROWTH_STAIRS.get(), blockTexture(ModBlocks.VOIDGROWTH_PLANKS.get()));
         slabBlock(ModBlocks.VOIDGROWTH_SLAB.get(), blockTexture(ModBlocks.VOIDGROWTH_PLANKS.get()), blockTexture(ModBlocks.VOIDGROWTH_PLANKS.get()));
@@ -59,6 +61,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.GNARLED_SHADOW_PINE);
 
         leavesBlock(ModBlocks.SHADOW_PINE_LEAVES);
+        leavesBlock(ModBlocks.PURPLE_SHADOW_PINE_LEAVES);
         saplingBlock(ModBlocks.SHADOW_PINE_SAPLING);
     }
 

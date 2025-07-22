@@ -33,6 +33,20 @@ public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> NAUTILUS_SHELL_PLACED_KEY = registerKey("nautilus_shell_placed");
 
+    public static final ResourceKey<PlacedFeature> DEAD_CORAL_TREE_PLACED_KEY = registerKey("dead_coral_tree_placed");
+
+    public static final ResourceKey<PlacedFeature> DEAD_CORAL_CLAW_PLACED_KEY = registerKey("dead_coral_claw_placed");
+
+    public static final ResourceKey<PlacedFeature> DEAD_CORAL_MUSHROOM_PLACED_KEY = registerKey("dead_coral_mushroom_placed");
+
+    public static final ResourceKey<PlacedFeature> SMOOTH_ENDSTONE_PLACED_KEY = registerKey("smooth_endstone_placed");
+
+    public static final ResourceKey<PlacedFeature> RANDOM_CORAL_PLACED_KEY = registerKey("random_coral_placed");
+
+    public static final ResourceKey<PlacedFeature> DEAD_GRASS_PLACED_KEY = registerKey("dead_grass_placed");
+
+    public static final ResourceKey<PlacedFeature> ROTATED_SAND_PLACED_KEY = registerKey("rotated_sand_placed");
+
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
@@ -79,12 +93,87 @@ public class ModPlacedFeatures {
                 configuredFeatures.getOrThrow(ModConfiguredFeatures.NAUTILUS_SHELL_KEY),
                 List.of(
                         CountPlacement.of(1),
-                        RarityFilter.onAverageOnceEvery(10),
+                        RarityFilter.onAverageOnceEvery(7),
                         InSquarePlacement.spread(),
                         PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                         BiomeFilter.biome()
                 ));
 
+        context.register(DEAD_CORAL_TREE_PLACED_KEY,
+                new PlacedFeature(
+                        configuredFeatures.getOrThrow(ModConfiguredFeatures.DEAD_CORAL_TREE_KEY),
+                        List.of(
+                                RarityFilter.onAverageOnceEvery(1),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                                BiomeFilter.biome()
+                        )
+                ));
+
+        context.register(DEAD_CORAL_CLAW_PLACED_KEY,
+                new PlacedFeature(
+                        configuredFeatures.getOrThrow(ModConfiguredFeatures.DEAD_CORAL_CLAW_KEY),
+                        List.of(
+                                RarityFilter.onAverageOnceEvery(1),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                                BiomeFilter.biome()
+                        )
+                ));
+
+        context.register(DEAD_CORAL_MUSHROOM_PLACED_KEY,
+                new PlacedFeature(
+                        configuredFeatures.getOrThrow(ModConfiguredFeatures.DEAD_CORAL_MUSHROOM_KEY),
+                        List.of(
+                                RarityFilter.onAverageOnceEvery(1),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                                BiomeFilter.biome()
+                        )
+                ));
+
+        context.register(SMOOTH_ENDSTONE_PLACED_KEY,
+                new PlacedFeature(
+                        configuredFeatures.getOrThrow(ModConfiguredFeatures.SMOOTH_ENDSTONE_PATCH_KEY),
+                        List.of(RarityFilter.onAverageOnceEvery(3),
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                                BiomeFilter.biome()
+                        )
+                ));
+
+        context.register(RANDOM_CORAL_PLACED_KEY,
+                new PlacedFeature(
+                        configuredFeatures.getOrThrow(ModConfiguredFeatures.RANDOM_CORAL_KEY),
+                        List.of(
+                                CountPlacement.of(10),            // Number per chunk
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                                BiomeFilter.biome()
+                        )
+                ));
+
+        context.register(DEAD_GRASS_PLACED_KEY,
+                new PlacedFeature(
+                        configuredFeatures.getOrThrow(ModConfiguredFeatures.DEAD_GRASS_KEY),
+                        List.of(
+                                CountPlacement.of(12),            // Number per chunk
+                                InSquarePlacement.spread(),
+                                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                                BiomeFilter.biome()
+                        )
+                ));
+
+        register(context, ROTATED_SAND_PLACED_KEY,
+                context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(ModConfiguredFeatures.ROTATED_SAND_KEY),
+                List.of(
+                        // Choose placement modifiers for your feature; e.g., run once per chunk near surface:
+                        CountPlacement.of(10),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                )
+        );
     }
 
 

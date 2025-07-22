@@ -1,7 +1,7 @@
-package net.idioticghost.voidweaponry.item;
+package net.idioticghost.voidweaponry;
 
-import net.idioticghost.voidweaponry.VoidWeaponry;
 import net.idioticghost.voidweaponry.block.ModBlocks;
+import net.idioticghost.voidweaponry.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -21,6 +21,7 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(ModBlocks.ENDSTONE_SAND_BLOCK.get());
+                        output.accept(ModBlocks.SMOOTH_ENDSTONE.get());
                         output.accept(ModBlocks.VOID_ORE.get());
                         output.accept(ModBlocks.VOIDGROWTH_PLANKS.get());
                         output.accept(ModBlocks.VOIDGROWTH_STAIRS.get());
@@ -34,6 +35,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.VOIDGROWTH_STAIRS.get());
                         output.accept(ModBlocks.VOID_KELP_BLOCK.get());
                         output.accept(ModBlocks.VOID_LANTERN.get());
+                        output.accept(ModItems.DEAD_GRASS_HELD.get());
+                        output.accept(ModItems.SHORT_DEAD_GRASS_HELD.get());
+                        output.accept(ModBlocks.NAUTILUS_SHELL_BLOCK.get());
 
                         output.accept(ModBlocks.GNARLED_SHADOW_PINE.get());
                         output.accept(ModBlocks.SHADOW_PINE_LOG.get());
@@ -41,6 +45,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.STRIPPED_SHADOW_PINE_WOOD.get());
                         output.accept(ModBlocks.STRIPPED_SHADOW_PINE_LOG.get());
                         output.accept(ModBlocks.SHADOW_PINE_LEAVES.get());
+                        output.accept(ModBlocks.PURPLE_SHADOW_PINE_LEAVES.get());
                         output.accept(ModBlocks.SHADOW_PINE_SAPLING.get());
 
                         output.accept(ModItems.VOID_SEAGRASS_HELD.get());

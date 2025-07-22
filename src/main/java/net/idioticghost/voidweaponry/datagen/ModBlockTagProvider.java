@@ -24,7 +24,6 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                  .add(ModBlocks.VOID_ORE.get());
          //To add more, dont add a comma, just copy paste the .add.
 
-
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.VOID_ORE.get());
 

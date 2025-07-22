@@ -30,6 +30,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.ENDSTONE_SAND_BLOCK.get());
+        dropSelf(ModBlocks.SMOOTH_ENDSTONE.get());
         dropSelf(ModBlocks.VOID_KELP_BLOCK.get());
         dropSelf(ModBlocks.VOIDGROWTH_PLANKS.get());
         dropSelf(ModBlocks.VOIDGROWTH_STAIRS.get());
@@ -75,6 +76,22 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                         )
         );
 
+        this.add(ModBlocks.DEAD_GRASS.get(),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModBlocks.DEAD_GRASS.get()))
+                        )
+        );
+
+        this.add(ModBlocks.SHORT_DEAD_GRASS.get(),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModBlocks.SHORT_DEAD_GRASS.get()))
+                        )
+        );
+
         this.dropSelf(ModBlocks.SHADOW_PINE_LOG.get());
         this.dropSelf(ModBlocks.SHADOW_PINE_WOOD.get());
         this.dropSelf(ModBlocks.STRIPPED_SHADOW_PINE_LOG.get());
@@ -82,7 +99,12 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.SHADOW_PINE_SAPLING.get());
         this.dropSelf(ModBlocks.GNARLED_SHADOW_PINE.get());
 
+
+
         this.add(ModBlocks.SHADOW_PINE_LEAVES.get(), block ->
+                createLeavesDrops(block, ModBlocks.SHADOW_PINE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+
+        this.add(ModBlocks.PURPLE_SHADOW_PINE_LEAVES.get(), block ->
                 createLeavesDrops(block, ModBlocks.SHADOW_PINE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 
         this.add(ModBlocks.NAUTILUS_SHELL_BLOCK.get(),

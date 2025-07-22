@@ -52,6 +52,12 @@ public class ModItems {
     public static final DeferredItem<Item> VOID_SEAGRASS_HELD = ITEMS.register("void_seagrass_held",
             () -> new ItemNameBlockItem(ModBlocks.VOID_SEAGRASS.get(), new Item.Properties()));
 
+    public static final DeferredItem<Item> DEAD_GRASS_HELD = ITEMS.register("dead_grass_held",
+            () -> new ItemNameBlockItem(ModBlocks.DEAD_GRASS.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> SHORT_DEAD_GRASS_HELD = ITEMS.register("short_dead_grass_held",
+            () -> new ItemNameBlockItem(ModBlocks.SHORT_DEAD_GRASS.get(), new Item.Properties()));
+
     //FOOD
 
     public static final DeferredItem<Item> COOKED_VOID_KELP = ITEMS.register("cooked_void_kelp",

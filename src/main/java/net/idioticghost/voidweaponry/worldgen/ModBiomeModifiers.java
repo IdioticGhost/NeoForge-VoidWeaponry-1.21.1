@@ -25,6 +25,20 @@ public class ModBiomeModifiers {
 
     public static final ResourceKey<BiomeModifier> ADD_NAUTILUS_SHELL = registerKey("add_nautilus_shell");
 
+    public static final ResourceKey<BiomeModifier> ADD_DEAD_CORAL_TREE = registerKey("add_dead_coral_tree");
+
+    public static final ResourceKey<BiomeModifier> ADD_DEAD_CORAL_CLAW = registerKey("add_dead_coral_claw");
+
+    public static final ResourceKey<BiomeModifier> ADD_DEAD_CORAL_MUSHROOM = registerKey("add_dead_coral_mushroom");
+
+    public static final ResourceKey<BiomeModifier> ADD_SMOOTH_ENDSTONE = registerKey("add_smooth_endstone");
+
+    public static final ResourceKey<BiomeModifier> ADD_RANDOM_CORAL = registerKey("add_random_coral");
+
+    public static final ResourceKey<BiomeModifier> ADD_DEAD_GRASS = registerKey("add_dead_grass");
+
+    public static final ResourceKey<BiomeModifier> ADD_ROTATED_SAND = registerKey("add_rotated_sand");
+
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeature = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
@@ -35,7 +49,7 @@ public class ModBiomeModifiers {
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
         context.register(ADD_SHADOW_PINE_TREE, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(biomes.getOrThrow(Biomes.PLAINS)),
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.SHROUDED_FOREST)),
                 HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.SHADOW_PINE_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
@@ -50,9 +64,44 @@ public class ModBiomeModifiers {
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
         context.register(ADD_NAUTILUS_SHELL, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(biomes.getOrThrow(ModBiomes.DRIED_DEPTHS)),
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.DRIED_DEPTHS), biomes.getOrThrow(ModBiomes.CORAL_WASTES), biomes.getOrThrow(ModBiomes.FORGOTTEN_BEACH)),
                 HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.NAUTILUS_SHELL_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_DEAD_CORAL_TREE, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.CORAL_WASTES)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.DEAD_CORAL_TREE_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_DEAD_CORAL_CLAW, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.CORAL_WASTES)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.DEAD_CORAL_CLAW_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_DEAD_CORAL_MUSHROOM, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.CORAL_WASTES)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.DEAD_CORAL_MUSHROOM_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_SMOOTH_ENDSTONE, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.CORAL_WASTES), biomes.getOrThrow(ModBiomes.DRIED_DEPTHS)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.SMOOTH_ENDSTONE_PLACED_KEY)),
+                GenerationStep.Decoration.TOP_LAYER_MODIFICATION));
+
+        context.register(ADD_RANDOM_CORAL, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.CORAL_WASTES)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.RANDOM_CORAL_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_DEAD_GRASS, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.CORAL_WASTES), biomes.getOrThrow(ModBiomes.FORGOTTEN_BEACH)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.DEAD_GRASS_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_ROTATED_SAND, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.CORAL_WASTES), biomes.getOrThrow(ModBiomes.FORGOTTEN_BEACH), biomes.getOrThrow(ModBiomes.DRIED_DEPTHS)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.ROTATED_SAND_PLACED_KEY)),
+                GenerationStep.Decoration.TOP_LAYER_MODIFICATION));
 
     }
 

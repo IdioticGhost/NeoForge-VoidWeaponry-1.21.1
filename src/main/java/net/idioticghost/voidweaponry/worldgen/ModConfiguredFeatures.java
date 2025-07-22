@@ -2,6 +2,8 @@ package net.idioticghost.voidweaponry.worldgen;
 
 import net.idioticghost.voidweaponry.VoidWeaponry;
 import net.idioticghost.voidweaponry.block.ModBlocks;
+import net.idioticghost.voidweaponry.worldgen.foliage.ShadowPineFoliagePlacer;
+import net.idioticghost.voidweaponry.worldgen.trunk.ShadowPineTrunkPlacer;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -10,22 +12,27 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaPineFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+
 
 import java.util.List;
 
@@ -45,6 +52,20 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> NAUTILUS_SHELL_KEY = registerKey("nautilus_shell");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DEAD_CORAL_TREE_KEY = registerKey("dead_coral_tree");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DEAD_CORAL_CLAW_KEY = registerKey("dead_coral_claw");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DEAD_CORAL_MUSHROOM_KEY = registerKey("dead_coral_mushroom");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SMOOTH_ENDSTONE_PATCH_KEY = registerKey("smooth_endstone_patch");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RANDOM_CORAL_KEY = registerKey("random_coral");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DEAD_GRASS_KEY = registerKey("dead_grass");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ROTATED_SAND_KEY = registerKey("rotated_sand");
+
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest voidReplaceables = new BlockMatchTest(Blocks.END_STONE);
 
@@ -61,9 +82,12 @@ public class ModConfiguredFeatures {
 
         register(context, SHADOW_PINE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.SHADOW_PINE_LOG.get()),
-                new GiantTrunkPlacer(20, 4, 3),
+                new ShadowPineTrunkPlacer(15, 1, 2),
                 BlockStateProvider.simple(ModBlocks.SHADOW_PINE_LEAVES.get()),
-                new MegaPineFoliagePlacer(ConstantInt.of(3), ConstantInt.of(3), ConstantInt.of(3)),
+                new ShadowPineFoliagePlacer(
+                        ConstantInt.of(2), //RADIUS OF LEAVES
+                        ConstantInt.of(0),
+                        6),
                 new TwoLayersFeatureSize(1, 0, 2)
         ).build());
 
@@ -88,6 +112,44 @@ public class ModConfiguredFeatures {
                         new SimpleBlockConfiguration(randomHorizontalFacing(ModBlocks.NAUTILUS_SHELL_BLOCK.get())),
                         List.of(ModBlocks.ENDSTONE_SAND_BLOCK.get())
                 ));
+
+        context.register(DEAD_CORAL_TREE_KEY,
+                new ConfiguredFeature<>(
+                        ModFeatures.DEAD_CORAL_TREE.get(),
+                        NoneFeatureConfiguration.INSTANCE));
+
+        context.register(DEAD_CORAL_CLAW_KEY,
+                new ConfiguredFeature<>(
+                        ModFeatures.DEAD_CORAL_CLAW.get(),
+                        NoneFeatureConfiguration.INSTANCE));
+
+        context.register(DEAD_CORAL_MUSHROOM_KEY,
+                new ConfiguredFeature<>(
+                        ModFeatures.DEAD_CORAL_MUSHROOM.get(),
+                        NoneFeatureConfiguration.INSTANCE));
+
+
+        context.register(
+                SMOOTH_ENDSTONE_PATCH_KEY,
+                new ConfiguredFeature<>(
+                        ModFeatures.SMOOTH_ENDSTONE_PATCH.get(),
+                        NoneFeatureConfiguration.INSTANCE
+                )
+        );
+
+        context.register(RANDOM_CORAL_KEY,
+                new ConfiguredFeature<>(ModFeatures.RANDOM_CORAL_FEATURE.get(), NoneFeatureConfiguration.INSTANCE));
+
+        context.register(
+                DEAD_GRASS_KEY,
+                new ConfiguredFeature<>(ModFeatures.DEAD_GRASS.get(), NoneFeatureConfiguration.INSTANCE));
+
+        context.register(
+                ROTATED_SAND_KEY,
+                new ConfiguredFeature<>(
+                        ModFeatures.SAND_ROTATION.get(),
+                        NoneFeatureConfiguration.INSTANCE)
+        );
     }
 
 

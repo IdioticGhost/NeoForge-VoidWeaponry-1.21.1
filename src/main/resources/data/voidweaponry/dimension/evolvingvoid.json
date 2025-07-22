@@ -1,0 +1,132 @@
+{
+  "type": "voidweaponry:evolvingvoid_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "voidweaponry:evolvingvoid_noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "voidweaponry:dried_depths",
+          "parameters": {
+            "continentalness": [
+              -0.8,
+              -0.2
+            ],
+            "depth": [
+              0,
+              0
+            ],
+            "erosion": [
+              0.0,
+              0.3
+            ],
+            "temperature": [
+              0.0,
+              0.0
+            ],
+            "humidity": [
+              0.0,
+              0.0
+            ],
+            "weirdness": [
+              0.0,
+              0.0
+            ],
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "voidweaponry:coral_wastes",
+          "parameters": {
+            "continentalness": [
+              -1.2,
+              -0.8
+            ],
+            "depth": [
+              0,
+              0
+            ],
+            "erosion": [
+              0.0,
+              0.3
+            ],
+            "temperature": [
+              0.0,
+              0.0
+            ],
+            "humidity": [
+              0.0,
+              0.0
+            ],
+            "weirdness": [
+              0.0,
+              0.0
+            ],
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "voidweaponry:shrouded_forest",
+          "parameters": {
+            "continentalness": [
+              0.2,
+              0.6
+            ],
+            "depth": [
+              0,
+              0
+            ],
+            "erosion": [
+              0.1,
+              0.4
+            ],
+            "temperature": [
+              0.0,
+              0.0
+            ],
+            "humidity": [
+              0.0,
+              0.0
+            ],
+            "weirdness": [
+              0.0,
+              0.0
+            ],
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "voidweaponry:forgotten_beach",
+          "parameters": {
+            "continentalness": [
+              -0.2,
+              0
+            ],
+            "depth": [
+              0,
+              0
+            ],
+            "erosion": [
+              0.0,
+              0.3
+            ],
+            "temperature": [
+              0.0,
+              0.0
+            ],
+            "humidity": [
+              0.0,
+              0.0
+            ],
+            "weirdness": [
+              0.0,
+              0.0
+            ],
+            "offset": 0.0
+          }
+        }
+      ]
+    }
+  }
+}

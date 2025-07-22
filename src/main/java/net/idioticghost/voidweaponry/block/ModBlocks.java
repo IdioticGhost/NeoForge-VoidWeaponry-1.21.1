@@ -57,6 +57,15 @@ public class ModBlocks {
     public static final DeferredBlock<Block> VOID_KELP_BLOCK = BLOCKS.register("void_kelp_block",
             () -> new Block(BlockBehaviour.Properties.of().strength(2f).sound(SoundType.WET_GRASS)));
 
+    public static final DeferredBlock<Block> SMOOTH_ENDSTONE = registerBlock("smooth_endstone",
+            () -> new Block(BlockBehaviour.Properties.of().strength(2f).sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> DEAD_GRASS = BLOCKS.register("dead_grass",
+            () -> new GrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).noOcclusion()));
+
+    public static final DeferredBlock<Block> SHORT_DEAD_GRASS = BLOCKS.register("short_dead_grass",
+            () -> new GrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).noOcclusion()));
+
 
     //ORES
 
@@ -142,6 +151,13 @@ public class ModBlocks {
     public static final DeferredBlock<Block> GNARLED_SHADOW_PINE = registerBlock("gnarled_shadow_pine",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.TUFF)));
     public static final DeferredBlock<Block> SHADOW_PINE_LEAVES = registerBlock("shadow_pine_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)) {
+                @Override
+                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return false;
+                }
+            });
+    public static final DeferredBlock<Block> PURPLE_SHADOW_PINE_LEAVES = registerBlock("purple_shadow_pine_leaves",
             () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)) {
                 @Override
                 public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
