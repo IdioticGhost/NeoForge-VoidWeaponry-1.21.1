@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "voidweaponry:coral_wastes",
+    "voidweaponry:dried_depths"
+  ],
+  "features": "voidweaponry:smooth_endstone_placed",
+  "step": "top_layer_modification"
+}

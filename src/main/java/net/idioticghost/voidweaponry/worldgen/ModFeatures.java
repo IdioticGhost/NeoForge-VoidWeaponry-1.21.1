@@ -3,9 +3,7 @@ package net.idioticghost.voidweaponry.worldgen;
 import net.idioticghost.voidweaponry.VoidWeaponry;
 import net.idioticghost.voidweaponry.block.ModBlocks;
 import net.idioticghost.voidweaponry.worldgen.foliage.ShadowPineFoliagePlacer;
-import net.idioticghost.voidweaponry.worldgen.misc.EndStoneSandRotationFeature;
-import net.idioticghost.voidweaponry.worldgen.misc.ObsidianSpikeFeature;
-import net.idioticghost.voidweaponry.worldgen.misc.SmoothEndstonePatchFeature;
+import net.idioticghost.voidweaponry.worldgen.misc.*;
 import net.idioticghost.voidweaponry.worldgen.plant.*;
 import net.idioticghost.voidweaponry.worldgen.trunk.ShadowPineTrunkPlacer;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -88,5 +86,17 @@ public class ModFeatures {
 
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> SAND_ROTATION =
             FEATURES.register("sand_rotation", () -> new EndStoneSandRotationFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> STAR_BERRY =
+            FEATURES.register("star_berry", () -> new StarBerryBushFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> ROTATED_DIRT_LEAF =
+            FEATURES.register("rotated_dirt_leaf", () -> new DirtLeafRotationFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> FIREFLY_GRASS =
+            FEATURES.register("firefly_grass", () -> new FireflyGrassFeature(NoneFeatureConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> ROTATED_HARDENED_DIRT =
+            FEATURES.register("rotated_hardened_dirt", () -> new HardenedDirtRotationFeature(NoneFeatureConfiguration.CODEC));
 
 }

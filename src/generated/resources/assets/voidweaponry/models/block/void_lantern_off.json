@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/lantern",
+  "textures": {
+    "lantern": "voidweaponry:block/void_lantern_off"
+  }
+}

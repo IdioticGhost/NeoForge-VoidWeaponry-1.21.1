@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_nugget"
+    },
+    "B": {
+      "item": "voidweaponry:void_kelp"
+    },
+    "C": {
+      "item": "voidweaponry:voidbound_gold"
+    }
+  },
+  "pattern": [
+    " A ",
+    "ABA",
+    "ACA"
+  ],
+  "result": {
+    "count": 3,
+    "id": "voidweaponry:void_lantern"
+  }
+}

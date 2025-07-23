@@ -1,0 +1,19 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.model.idle": {
+			"animation_length": 0.0417,
+			"bones": {
+				"lazers": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.model.infusing": {
+			"loop": true
+		}
+	},
+	"geckolib_format_version": 2
+}

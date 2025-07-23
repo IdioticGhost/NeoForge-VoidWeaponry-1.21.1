@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "voidweaponry:voidbound_gold"
+  },
+  "base": {
+    "item": "minecraft:netherite_pickaxe"
+  },
+  "result": {
+    "count": 1,
+    "id": "voidweaponry:voidgold_pickaxe"
+  },
+  "template": {
+    "item": "voidweaponry:voidgold_smithing_template"
+  }
+}

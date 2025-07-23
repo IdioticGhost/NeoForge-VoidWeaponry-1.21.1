@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "voidweaponry:firefly_grass_held"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "voidweaponry:blocks/firefly_grass"
+}

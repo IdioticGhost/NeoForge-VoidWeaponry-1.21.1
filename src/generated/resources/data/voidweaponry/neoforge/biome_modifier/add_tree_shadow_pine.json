@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "voidweaponry:shrouded_forest",
+  "features": "voidweaponry:shadow_pine_placed",
+  "step": "vegetal_decoration"
+}

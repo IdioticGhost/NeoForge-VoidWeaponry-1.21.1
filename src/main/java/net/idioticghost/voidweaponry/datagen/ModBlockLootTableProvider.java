@@ -2,6 +2,7 @@ package net.idioticghost.voidweaponry.datagen;
 
 import net.idioticghost.voidweaponry.block.ModBlocks;
 import net.idioticghost.voidweaponry.item.ModItems;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
@@ -30,6 +32,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.ENDSTONE_SAND_BLOCK.get());
+        dropSelf(ModBlocks.ASH_BLOCK.get());
         dropSelf(ModBlocks.SMOOTH_ENDSTONE.get());
         dropSelf(ModBlocks.VOID_KELP_BLOCK.get());
         dropSelf(ModBlocks.VOIDGROWTH_PLANKS.get());
@@ -92,6 +95,14 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                         )
         );
 
+        this.add(ModBlocks.FIREFLY_GRASS.get(),
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModBlocks.FIREFLY_GRASS.get()))
+                        )
+        );
+
         this.dropSelf(ModBlocks.SHADOW_PINE_LOG.get());
         this.dropSelf(ModBlocks.SHADOW_PINE_WOOD.get());
         this.dropSelf(ModBlocks.STRIPPED_SHADOW_PINE_LOG.get());
@@ -99,7 +110,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.SHADOW_PINE_SAPLING.get());
         this.dropSelf(ModBlocks.GNARLED_SHADOW_PINE.get());
 
-
+        this.dropSelf(ModBlocks.DIRT_LEAF_BLOCK.get());
+        this.dropSelf(ModBlocks.LEAF_PILE_BLOCK.get());
+        this.dropSelf(ModBlocks.HARDENED_DIRT_BLOCK.get());
 
         this.add(ModBlocks.SHADOW_PINE_LEAVES.get(), block ->
                 createLeavesDrops(block, ModBlocks.SHADOW_PINE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
@@ -109,6 +122,17 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         this.add(ModBlocks.NAUTILUS_SHELL_BLOCK.get(),
                 createSingleItemTable(Items.NAUTILUS_SHELL));
+
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+
+        this.add(ModBlocks.STAR_VINE.get(), block -> this.applyExplosionDecay(
+                block,LootTable.lootTable().withPool(LootPool.lootPool().when(
+                                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.STAR_VINE.get())
+                                                .setProperties(StatePropertiesPredicate.Builder.properties())
+                                ).add(LootItem.lootTableItem(ModItems.STAR_BERRIES.get()))
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F)))
+                )));
+
     }
 
     //THIS IS FOR GENERATING COPPER-ESQUE LOOT TABLES

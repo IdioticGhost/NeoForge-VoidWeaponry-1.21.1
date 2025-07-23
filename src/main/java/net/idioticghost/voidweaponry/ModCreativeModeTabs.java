@@ -38,6 +38,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DEAD_GRASS_HELD.get());
                         output.accept(ModItems.SHORT_DEAD_GRASS_HELD.get());
                         output.accept(ModBlocks.NAUTILUS_SHELL_BLOCK.get());
+                        output.accept(ModBlocks.ASH_BLOCK.get());
+                        output.accept(ModBlocks.DIRT_LEAF_BLOCK.get());
+                        output.accept(ModBlocks.HARDENED_DIRT_BLOCK.get());
+                        output.accept(ModBlocks.LEAF_PILE_BLOCK.get());
 
                         output.accept(ModBlocks.GNARLED_SHADOW_PINE.get());
                         output.accept(ModBlocks.SHADOW_PINE_LOG.get());
@@ -51,6 +55,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.VOID_SEAGRASS_HELD.get());
                         output.accept(ModItems.VOID_KELP.get());
                         output.accept(ModItems.COOKED_VOID_KELP.get());
+                        output.accept(ModItems.STAR_BERRIES.get());
                         output.accept(ModItems.VOID_SHARD.get());
                         output.accept(ModItems.VOIDBOUND_GOLD.get());
                         output.accept(ModItems.VOID_CATALYST.get());

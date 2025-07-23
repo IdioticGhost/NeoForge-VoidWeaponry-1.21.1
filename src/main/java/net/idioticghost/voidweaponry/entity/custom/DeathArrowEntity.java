@@ -6,6 +6,8 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -33,7 +35,6 @@ public class DeathArrowEntity extends AbstractArrow {
 
     @Override
     public boolean isCritArrow() {
-        // Disable crit particles client-side but keep crit damage server-side
         return !this.level().isClientSide && super.isCritArrow();
     }
 
@@ -41,15 +42,18 @@ public class DeathArrowEntity extends AbstractArrow {
     public void tick() {
         super.tick();
 
-        // On CLIENT only: spawn gold particles IF arrow is critical
         if (this.level().isClientSide && super.isCritArrow()) {
-            for (int i = 0; i < 4; i++) {
+            double dx = this.getDeltaMovement().x;
+            double dy = this.getDeltaMovement().y;
+            double dz = this.getDeltaMovement().z;
+
+            for (int i = 0; i < 2; i++) {
                 this.level().addParticle(
                         ModParticles.GOLD_PARTICLES.get(),
-                        this.getX() + this.getDeltaMovement().x * i / 4.0,
-                        this.getY() + this.getDeltaMovement().y * i / 4.0,
-                        this.getZ() + this.getDeltaMovement().z * i / 4.0,
-                        0.0, 0.01, 0.0
+                        this.getX() + dx * i / 4.0,
+                        this.getY() + dy * i / 4.0 - 0.1,
+                        this.getZ() + dz * i / 4.0,
+                        0, 0.01, 0
                 );
             }
         }
@@ -94,27 +98,6 @@ public class DeathArrowEntity extends AbstractArrow {
         return this.chargeLevel;
     }
 
-    public static void spawnMarkParticlesStatic(LivingEntity victim, int hitCount) {
-        Level level = victim.level();
-        if (!(level instanceof ClientLevel clientLevel)) return;
-
-        double x = victim.getX();
-        double y = victim.getY() + victim.getBbHeight() + 0.3;
-        double z = victim.getZ();
-
-        for (int i = 0; i < hitCount; i++) {
-            double offsetX = (level.random.nextDouble() - 0.5) * 0.3;
-            double offsetZ = (level.random.nextDouble() - 0.5) * 0.3;
-
-            clientLevel.addParticle(
-                    ModParticles.GOLD_PARTICLES.get(),
-                    x + offsetX,
-                    y + 0.1 * i,
-                    z + offsetZ,
-                    0, 0, 0
-            );
-        }
-    }
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
@@ -125,7 +108,22 @@ public class DeathArrowEntity extends AbstractArrow {
 
         if (!(shooter instanceof LivingEntity attacker) || !(target instanceof LivingEntity victim)) return;
 
+        MobEffectInstance currentMarked = victim.getEffect(MobEffects.GLOWING);
+        int newAmplifier = 0;
 
+        if (this.chargeLevel >= 0.9f) {
+            if (currentMarked != null) {
+                int currentAmp = currentMarked.getAmplifier();
+                newAmplifier = Math.min(currentAmp + 1, 2);
+            }
+
+
+            int durationTicks = (newAmplifier == 2) ? 20 : 140;
+
+            MobEffectInstance newMarkedEffect = new MobEffectInstance(MobEffects.GLOWING, durationTicks, newAmplifier, false, false);
+
+            victim.addEffect(newMarkedEffect);
+        }
 
         UUID attackerId = attacker.getUUID();
         UUID targetId = victim.getUUID();
@@ -144,14 +142,14 @@ public class DeathArrowEntity extends AbstractArrow {
             info.refreshHit();
         }
 
-        if (info.hitCount == 1 && this.chargeLevel >= 0.9f) {
+        if (info.hitCount == 3 && this.chargeLevel >= 0.9f) {
             attacker.level().playSound(
                     null,
                     attacker.blockPosition(),
                     SoundEvents.ARROW_HIT_PLAYER,
                     SoundSource.PLAYERS,
                     2.0f,
-                    0.5f
+                    0.7f
             );
         } else if (info.hitCount == 2 && this.chargeLevel >= 0.9f) {
             attacker.level().playSound(
@@ -162,14 +160,14 @@ public class DeathArrowEntity extends AbstractArrow {
                     2.0f,
                     0.6f
             );
-        } else if (info.hitCount == 3 && this.chargeLevel >= 0.9f) {
+        } else if (info.hitCount == 1 && this.chargeLevel >= 0.9f) {
             attacker.level().playSound(
                     null,
                     attacker.blockPosition(),
                     SoundEvents.ARROW_HIT_PLAYER,
                     SoundSource.PLAYERS,
                     2.0f,
-                    0.7f
+                    0.4f
             );
         }
 
@@ -196,22 +194,6 @@ public class DeathArrowEntity extends AbstractArrow {
                 victim.getMaxHealth(),
                 victim.getHealth()
         );
-
-        if (!level().isClientSide) {
-            ServerLevel serverLevel = (ServerLevel) level();
-            for (int i = 0; i < info.hitCount; i++) {
-                double offsetX = (level().random.nextDouble() - 0.5) * 0.3;
-                double offsetZ = (level().random.nextDouble() - 0.5) * 0.3;
-
-                serverLevel.sendParticles(
-                        ModParticles.GOLD_PARTICLES.get(),
-                        victim.getX() + offsetX,
-                        victim.getY() + victim.getBbHeight() + 0.3 + 0.1 * i,
-                        victim.getZ() + offsetZ,
-                        1, 0, 0, 0, 0
-                );
-            }
-        }
 
         VoidWeaponry.DeathArrowTracker.HIT_MAP.getOrDefault(attackerId, new HashMap<>()).entrySet().removeIf(e -> e.getValue().isExpired());
     }

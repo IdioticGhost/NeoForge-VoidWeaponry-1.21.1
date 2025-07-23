@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "voidweaponry:block/stripped_shadow_pine_log",
+    "side": "voidweaponry:block/stripped_shadow_pine_log"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "voidweaponry:voidbound_gold"
+  },
+  "base": {
+    "item": "minecraft:netherite_leggings"
+  },
+  "result": {
+    "count": 1,
+    "id": "voidweaponry:voidgold_leggings"
+  },
+  "template": {
+    "item": "voidweaponry:voidgold_smithing_template"
+  }
+}

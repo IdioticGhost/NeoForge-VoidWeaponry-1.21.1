@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "voidweaponry:coral_wastes",
+    "voidweaponry:forgotten_beach",
+    "voidweaponry:dried_depths"
+  ],
+  "features": "voidweaponry:rotated_sand_placed",
+  "step": "top_layer_modification"
+}

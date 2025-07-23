@@ -38,5 +38,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHADOW_PINE_WOOD.get())
                 .add(ModBlocks.STRIPPED_SHADOW_PINE_WOOD.get())
                 .add(ModBlocks.STRIPPED_SHADOW_PINE_LOG.get());
+
+        this.tag(BlockTags.DIRT)
+                .add(ModBlocks.DIRT_LEAF_BLOCK.get())
+                .add(ModBlocks.HARDENED_DIRT_BLOCK.get());
     }
 }

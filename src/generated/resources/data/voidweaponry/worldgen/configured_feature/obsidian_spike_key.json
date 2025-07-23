@@ -1,0 +1,8 @@
+{
+  "type": "voidweaponry:obsidian_spike",
+  "config": {
+    "state": {
+      "Name": "minecraft:obsidian"
+    }
+  }
+}

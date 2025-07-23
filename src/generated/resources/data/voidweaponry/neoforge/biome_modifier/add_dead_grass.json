@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "voidweaponry:coral_wastes",
+    "voidweaponry:forgotten_beach"
+  ],
+  "features": "voidweaponry:dead_grass_placed",
+  "step": "vegetal_decoration"
+}

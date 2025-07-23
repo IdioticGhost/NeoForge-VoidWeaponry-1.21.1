@@ -31,11 +31,15 @@ public class ModBiomes {
     public static final ResourceKey<Biome> SHROUDED_FOREST = ResourceKey.create(Registries.BIOME,
             ResourceLocation.fromNamespaceAndPath(VoidWeaponry.MOD_ID, "shrouded_forest"));
 
+    public static final ResourceKey<Biome> ASHEN_TUNDRA = ResourceKey.create(Registries.BIOME,
+            ResourceLocation.fromNamespaceAndPath(VoidWeaponry.MOD_ID, "ashen_tundra"));
+
     public static void bootstrap(BootstrapContext<Biome> context) {
         context.register(DRIED_DEPTHS, driedDepths(context));
         context.register(CORAL_WASTES, coralWastes(context));
-        context.register(FORGOTTEN_BEACH, coralWastes(context));
-        context.register(SHROUDED_FOREST, coralWastes(context));
+        context.register(FORGOTTEN_BEACH, forgottenBeach(context));
+        context.register(SHROUDED_FOREST, shroudedForest(context));
+        context.register(ASHEN_TUNDRA, ashenTundra(context));
     }
 
 
@@ -128,8 +132,8 @@ public class ModBiomes {
 //        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
 //                context.lookup(Registries.PLACED_FEATURE).getOrThrow(ModPlacedFeatures.DEAD_CORAL_MUSHROOM_PLACED_KEY));
 
-        //BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
-        //BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
@@ -220,6 +224,56 @@ public class ModBiomes {
         BiomeGenerationSettings.Builder biomeBuilder =
                 new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
 
+        //globalOverworldGeneration(biomeBuilder);
+        //BiomeDefaultFeatures.addForestFlowers(biomeBuilder);
+        //BiomeDefaultFeatures.addFerns(biomeBuilder);
+        //BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        //BiomeDefaultFeatures.addExtraGold(biomeBuilder);
+
+//        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_PLAINS);
+
+//        biomeBuilder.addFeature(GenerationStep.Decoration.SURFACE_STRUCTURES,
+//                context.lookup(Registries.PLACED_FEATURE).getOrThrow(ModPlacedFeatures.OBSIDIAN_SPIKE_PLACED_KEY));
+
+        //BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
+        //BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .downfall(0.8f)
+                .temperature(0.7f)
+                .generationSettings(biomeBuilder.build())
+                .mobSpawnSettings(spawnBuilder.build())
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .waterColor(0x000000)
+                        .waterFogColor(0xbf1b26)
+                        .skyColor(0x1595b0)
+                        .grassColorOverride(0x4d3926)
+                        .foliageColorOverride(0xd203fc)
+                        .fogColor(0x1595b0)
+                        .ambientParticle(new AmbientParticleSettings(
+                                ModParticles.VOID_WATCHER_PARTICLES.get(),
+                                0.004F
+                        ))
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                        .ambientLoopSound(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP)
+                        .ambientAdditionsSound(new AmbientAdditionsSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, 0.0111D))
+                        .backgroundMusic(null).build())
+                .build();
+    }
+
+    //ASHEN TUNDRA
+
+    private static Biome ashenTundra(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        //spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 5, 4, 4));
+
+        //BiomeDefaultFeatures.farmAnimals(spawnBuilder);
+        //BiomeDefaultFeatures.commonSpawns(spawnBuilder);
+
+        BiomeGenerationSettings.Builder biomeBuilder =
+                new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
+
         globalOverworldGeneration(biomeBuilder);
         //BiomeDefaultFeatures.addForestFlowers(biomeBuilder);
         //BiomeDefaultFeatures.addFerns(biomeBuilder);
@@ -243,13 +297,13 @@ public class ModBiomes {
                 .specialEffects((new BiomeSpecialEffects.Builder())
                         .waterColor(0x000000)
                         .waterFogColor(0xbf1b26)
-                        .skyColor(0x000000)
+                        .skyColor(0x1595b0)
                         .grassColorOverride(0x7f03fc)
                         .foliageColorOverride(0xd203fc)
-                        .fogColor(0x411060)
+                        .fogColor(0xffffff)
                         .ambientParticle(new AmbientParticleSettings(
-                                ModParticles.VOID_WATCHER_PARTICLES.get(),
-                                0.004F
+                                ParticleTypes.WHITE_ASH,
+                                0.1F
                         ))
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
                         .ambientLoopSound(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP)

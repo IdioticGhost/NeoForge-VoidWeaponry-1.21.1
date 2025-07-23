@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "voidgrowth",
+  "ingredients": [
+    {
+      "item": "voidweaponry:voidgrowth_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "voidweaponry:voidgrowth_button"
+  }
+}

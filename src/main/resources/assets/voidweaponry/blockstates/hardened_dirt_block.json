@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "voidweaponry:block/hardened_dirt_block" },
+    "facing=east": { "model": "voidweaponry:block/hardened_dirt_block", "y": 90 },
+    "facing=south": { "model": "voidweaponry:block/hardened_dirt_block", "y": 180 },
+    "facing=west": { "model": "voidweaponry:block/hardened_dirt_block", "y": 270 }
+  }
+}

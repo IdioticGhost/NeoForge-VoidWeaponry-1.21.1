@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "voidweaponry:voidbound_gold"
+  },
+  "base": {
+    "item": "minecraft:netherite_hoe"
+  },
+  "result": {
+    "count": 1,
+    "id": "voidweaponry:voidgold_hoe"
+  },
+  "template": {
+    "item": "voidweaponry:voidgold_smithing_template"
+  }
+}

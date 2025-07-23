@@ -2,7 +2,7 @@
   "ambient_light": 0,
   "bed_works": true,
   "coordinate_scale": 1,
-  "fixed_time": 1000,
+  "fixed_time": 14500,
   "effects": "minecraft:the_nether",
   "has_ceiling": false,
   "has_raids": true,

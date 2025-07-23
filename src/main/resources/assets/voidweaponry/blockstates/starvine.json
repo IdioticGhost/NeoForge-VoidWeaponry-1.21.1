@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "berries=false": { "model": "voidweaponry:block/starvine" },
+    "berries=true":  { "model": "voidweaponry:block/starvine_with_berry" }
+  }
+}

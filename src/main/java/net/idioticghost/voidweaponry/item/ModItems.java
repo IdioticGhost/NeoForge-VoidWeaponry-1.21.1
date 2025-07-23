@@ -58,10 +58,16 @@ public class ModItems {
     public static final DeferredItem<Item> SHORT_DEAD_GRASS_HELD = ITEMS.register("short_dead_grass_held",
             () -> new ItemNameBlockItem(ModBlocks.SHORT_DEAD_GRASS.get(), new Item.Properties()));
 
+    public static final DeferredItem<Item> FIREFLY_GRASS_HELD = ITEMS.register("firefly_grass_held",
+            () -> new ItemNameBlockItem(ModBlocks.FIREFLY_GRASS.get(), new Item.Properties()));
+
     //FOOD
 
     public static final DeferredItem<Item> COOKED_VOID_KELP = ITEMS.register("cooked_void_kelp",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.COOKED_VOID_KELP)));
+            () -> new Item(new Item.Properties().food(net.idioticghost.voidweaponry.item.ModFoodProperties.COOKED_VOID_KELP)));
+
+    public static final DeferredItem<Item> STAR_BERRIES = ITEMS.register("star_berries",
+            () -> new ItemNameBlockItem(ModBlocks.STAR_VINE.get(), new Item.Properties().food(net.idioticghost.voidweaponry.item.ModFoodProperties.STAR_BERRIES)));
 
     //FUEL
 

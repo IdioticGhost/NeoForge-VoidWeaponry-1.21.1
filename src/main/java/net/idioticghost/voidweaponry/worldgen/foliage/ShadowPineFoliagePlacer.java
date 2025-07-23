@@ -44,6 +44,7 @@ public class ShadowPineFoliagePlacer extends FoliagePlacer {
         return ModFeatures.SHADOW_PINE_FOLIAGE_PLACER.value();
     }
 
+
     @Override
     protected void createFoliage(LevelSimulatedReader level, FoliageSetter setter, RandomSource random,
                                  TreeConfiguration config, int foliageHeight, FoliageAttachment attachment,

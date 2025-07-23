@@ -24,8 +24,7 @@ public class EndStoneSandRotationFeature extends Feature<NoneFeatureConfiguratio
         BlockPos origin = context.origin();
         RandomSource random = context.random();
 
-        // Scan a volume around origin to find your sand blocks
-        int radius = 8; // or your preferred range
+        int radius = 8;
         boolean placedAny = false;
 
         for (int dx = -radius; dx <= radius; dx++) {

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cooked_void_kelp": {
+      "conditions": {
+        "items": [
+          {
+            "items": "voidweaponry:cooked_void_kelp"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:voidweaponrycooked_void_kelp_block_from_cooked_void_kelp"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cooked_void_kelp"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:voidweaponrycooked_void_kelp_block_from_cooked_void_kelp"
+    ]
+  }
+}

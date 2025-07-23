@@ -28,6 +28,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.List;
 import java.util.function.Supplier;
 
+import static net.idioticghost.voidweaponry.block.custom.StarBerryBushBlock.BERRIES;
+
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(VoidWeaponry.MOD_ID);
@@ -66,6 +68,21 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SHORT_DEAD_GRASS = BLOCKS.register("short_dead_grass",
             () -> new GrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).noOcclusion()));
 
+    public static final DeferredBlock<Block> FIREFLY_GRASS = BLOCKS.register("firefly_grass",
+            () -> new FireFlyGrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS)
+                    .noOcclusion().lightLevel(state -> 5).randomTicks()));
+
+    public static final DeferredBlock<Block> ASH_BLOCK = registerBlock("ash_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT).sound(SoundType.SAND)));
+
+    public static final DeferredBlock<Block> DIRT_LEAF_BLOCK = registerBlock("dirt_leaf_block",
+            () -> new DirtLeafBlock());
+
+    public static final DeferredBlock<Block> HARDENED_DIRT_BLOCK = registerBlock("hardened_dirt_block",
+            () -> new HardenedDirtBlock());
+
+    public static final DeferredBlock<Block> LEAF_PILE_BLOCK = registerBlock("leaf_pile_block",
+            () -> new LeafPileBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)));
 
     //ORES
 
@@ -156,11 +173,19 @@ public class ModBlocks {
                 public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
                     return false;
                 }
+                @Override
+                public boolean isRandomlyTicking(BlockState state) {
+                    return false;
+                }
             });
     public static final DeferredBlock<Block> PURPLE_SHADOW_PINE_LEAVES = registerBlock("purple_shadow_pine_leaves",
             () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)) {
                 @Override
                 public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+                    return false;
+                }
+                @Override
+                public boolean isRandomlyTicking(BlockState state) {
                     return false;
                 }
             });
@@ -185,6 +210,12 @@ public class ModBlocks {
                     .pushReaction(PushReaction.DESTROY)
             )
     );
+
+    public static final DeferredBlock<Block> STAR_VINE = BLOCKS.register("starvine",
+            () -> new StarBerryBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAVE_VINES)
+                    .lightLevel(state -> state.getValue(BERRIES) ? 8 : 0)));
+
+
 
     public static final DeferredBlock<Block> NAUTILUS_SHELL_BLOCK = registerBlock("nautilus_shell_block",
             () -> new NautilusShellBlock(BlockBehaviour.Properties.of().noOcclusion()));

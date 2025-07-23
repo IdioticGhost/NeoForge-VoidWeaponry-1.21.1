@@ -66,6 +66,14 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> ROTATED_SAND_KEY = registerKey("rotated_sand");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> STAR_BERRY_KEY = registerKey("star_berry_key");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ROTATED_DIRT_LEAF_KEY = registerKey("rotated_dirt_leaf");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FIREFLY_GRASS_KEY = registerKey("firefly_grass_key");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ROTATED_HARDENED_DIRT_KEY = registerKey("rotated_hardened_dirt_key");
+
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest voidReplaceables = new BlockMatchTest(Blocks.END_STONE);
 
@@ -148,6 +156,34 @@ public class ModConfiguredFeatures {
                 ROTATED_SAND_KEY,
                 new ConfiguredFeature<>(
                         ModFeatures.SAND_ROTATION.get(),
+                        NoneFeatureConfiguration.INSTANCE)
+        );
+
+        context.register(
+                STAR_BERRY_KEY,
+                new ConfiguredFeature<>(
+                        ModFeatures.STAR_BERRY.get(),
+                        NoneFeatureConfiguration.INSTANCE)
+        );
+
+        context.register(
+                ROTATED_DIRT_LEAF_KEY,
+                new ConfiguredFeature<>(
+                        ModFeatures.ROTATED_DIRT_LEAF.get(),
+                        NoneFeatureConfiguration.INSTANCE)
+        );
+
+        context.register(
+                FIREFLY_GRASS_KEY,
+                new ConfiguredFeature<>(
+                        ModFeatures.FIREFLY_GRASS.get(),
+                        NoneFeatureConfiguration.INSTANCE)
+        );
+
+        context.register(
+                ROTATED_HARDENED_DIRT_KEY,
+                new ConfiguredFeature<>(
+                        ModFeatures.ROTATED_HARDENED_DIRT.get(),
                         NoneFeatureConfiguration.INSTANCE)
         );
     }

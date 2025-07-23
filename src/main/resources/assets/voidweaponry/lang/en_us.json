@@ -43,6 +43,12 @@
   "block.voidweaponry.smooth_endstone": "Smooth End Stone",
   "block.voidweaponry.void_kelp_block": "Dried Void Kelp Block",
   "block.voidweaponry.void_ore": "Voidshard Ore",
+  "block.voidweaponry.ash_block": "Ash Block",
+  "item.voidweaponry.star_berries": "Star Berries",
+  "block.voidweaponry.hardened_dirt_block": "Hardened Dirt",
+  "block.voidweaponry.leaf_pile_block": "Leaf Pile",
+  "block.voidweaponry.dirt_leaf_block": "Leafy Dirt",
+  "block.voidweaponry.firefly_grass": "Firefly Grass",
 
   "block.voidweaponry.voidgrowth_planks": "Shadowpine Planks",
   "block.voidweaponry.voidgrowth_stairs": "Shadowpine Stairs",
@@ -103,7 +109,7 @@
   "tooltip.voidweaponry.death_bow_5.tooltip": "§f[5% Enemy Max HP] §7as true damage,",
   "tooltip.voidweaponry.death_bow_6.tooltip": "§7with stacks dropping after 7 seconds.",
   "tooltip.voidweaponry.death_bow_7.tooltip": "",
-  "tooltip.voidweaponry.death_bow_8.tooltip": "§6Active: True Respite",
+  "tooltip.voidweaponry.death_bow_8.tooltip": "§6Active: Second Wind",
   "tooltip.voidweaponry.death_bow_9.tooltip": "§7Create an area in which no entity can fall below 10% HP.",
   "tooltip.voidweaponry.death_bow_10.tooltip": "§3100 Mana",
   "tooltip.voidweaponry.death_bow_11.tooltip": "§c60s Cooldown"

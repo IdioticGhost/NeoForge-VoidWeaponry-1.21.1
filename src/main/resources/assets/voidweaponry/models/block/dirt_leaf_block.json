@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "voidweaponry:block/dirt_leaf_block"
+  }
+}
+
+

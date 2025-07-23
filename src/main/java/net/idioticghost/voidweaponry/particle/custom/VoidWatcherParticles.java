@@ -19,7 +19,7 @@ public class VoidWatcherParticles extends TextureSheetParticle {
         this.targetY = targetY;
         this.targetZ = targetZ;
 
-        this.quadSize = 0.05f;  // small size like conduit particle
+        this.quadSize = 0.05f;
         this.lifetime = 40;
 
         this.setSpriteFromAge(spriteSet);
@@ -43,12 +43,10 @@ public class VoidWatcherParticles extends TextureSheetParticle {
             return;
         }
 
-        // Normalize direction
         dx /= dist;
         dy /= dist;
         dz /= dist;
 
-        // Set constant speed toward target (adjust speed to your liking)
         double speed = 0.035;
 
         this.xd = dx * speed;

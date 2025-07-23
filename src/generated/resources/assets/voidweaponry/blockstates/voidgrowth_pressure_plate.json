@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "voidweaponry:block/voidgrowth_pressure_plate"
+    },
+    "powered=true": {
+      "model": "voidweaponry:block/voidgrowth_pressure_plate_down"
+    }
+  }
+}

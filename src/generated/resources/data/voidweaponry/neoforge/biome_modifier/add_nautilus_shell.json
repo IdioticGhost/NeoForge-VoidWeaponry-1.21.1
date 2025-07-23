@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "voidweaponry:dried_depths",
+    "voidweaponry:coral_wastes",
+    "voidweaponry:forgotten_beach"
+  ],
+  "features": "voidweaponry:nautilus_shell_placed",
+  "step": "vegetal_decoration"
+}

@@ -8,11 +8,15 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CaveVinesBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
+
+import java.util.function.Function;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -23,10 +27,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         //blockWithItem(ModBlocks.ENDSTONE_SAND_BLOCK);
         blockWithItem(ModBlocks.SMOOTH_ENDSTONE);
+        //blockWithItem(ModBlocks.DIRT_LEAF_BLOCK);
+       // blockWithItem(ModBlocks.HARDENED_DIRT_BLOCK);
+        blockWithItem(ModBlocks.LEAF_PILE_BLOCK);
         blockWithItem(ModBlocks.VOID_ORE);
         blockWithItem(ModBlocks.VOID_KELP_BLOCK);
         blockWithItem(ModBlocks.VOIDGROWTH_PLANKS);
-
+        blockWithItem(ModBlocks.ASH_BLOCK);
 
         stairsBlock(ModBlocks.VOIDGROWTH_STAIRS.get(), blockTexture(ModBlocks.VOIDGROWTH_PLANKS.get()));
         slabBlock(ModBlocks.VOIDGROWTH_SLAB.get(), blockTexture(ModBlocks.VOIDGROWTH_PLANKS.get()), blockTexture(ModBlocks.VOIDGROWTH_PLANKS.get()));

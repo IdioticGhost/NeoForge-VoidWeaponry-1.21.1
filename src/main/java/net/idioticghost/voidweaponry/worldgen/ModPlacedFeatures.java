@@ -19,6 +19,7 @@ import net.minecraft.world.level.levelgen.placement.*;
 import java.util.List;
 
 import static net.idioticghost.voidweaponry.worldgen.ModConfiguredFeatures.OBSIDIAN_SPIKE_KEY;
+import static net.idioticghost.voidweaponry.worldgen.ModConfiguredFeatures.ROTATED_HARDENED_DIRT_KEY;
 
 public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> VOID_ORE_PLACED_KEY = registerKey("void_ore_placed");
@@ -46,6 +47,14 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DEAD_GRASS_PLACED_KEY = registerKey("dead_grass_placed");
 
     public static final ResourceKey<PlacedFeature> ROTATED_SAND_PLACED_KEY = registerKey("rotated_sand_placed");
+
+    public static final ResourceKey<PlacedFeature> STAR_BERRY_PLACED_KEY = registerKey("star_berry_placed");
+
+    public static final ResourceKey<PlacedFeature> ROTATED_DIRT_LEAF_PLACED_KEY = registerKey("rotated_dirt_leaf_placed");
+
+    public static final ResourceKey<PlacedFeature> FIREFLY_GRASS_PLACED_KEY = registerKey("firefly_grass_placed");
+
+    public static final ResourceKey<PlacedFeature> ROTATED_HARDENED_DIRT_PLACED_KEY = registerKey("rotated_hardened_dirt_key");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -167,8 +176,47 @@ public class ModPlacedFeatures {
         register(context, ROTATED_SAND_PLACED_KEY,
                 context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(ModConfiguredFeatures.ROTATED_SAND_KEY),
                 List.of(
-                        // Choose placement modifiers for your feature; e.g., run once per chunk near surface:
                         CountPlacement.of(10),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                )
+        );
+
+        register(context, STAR_BERRY_PLACED_KEY,
+                context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(ModConfiguredFeatures.STAR_BERRY_KEY),
+                List.of(
+                        CountPlacement.of(9),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                )
+        );
+
+        register(context, ROTATED_DIRT_LEAF_PLACED_KEY,
+                context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(ModConfiguredFeatures.ROTATED_DIRT_LEAF_KEY),
+                List.of(
+                        CountPlacement.of(1),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                )
+        );
+
+        register(context, FIREFLY_GRASS_PLACED_KEY,
+                context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(ModConfiguredFeatures.FIREFLY_GRASS_KEY),
+                List.of(
+                        CountPlacement.of(6),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                )
+        );
+
+        register(context, ROTATED_HARDENED_DIRT_PLACED_KEY,
+                context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(ModConfiguredFeatures.ROTATED_HARDENED_DIRT_KEY),
+                List.of(
+                        CountPlacement.of(6),
                         InSquarePlacement.spread(),
                         PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                         BiomeFilter.biome()

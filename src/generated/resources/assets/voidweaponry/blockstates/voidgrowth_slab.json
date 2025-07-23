@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "voidweaponry:block/voidgrowth_slab"
+    },
+    "type=double": {
+      "model": "voidweaponry:block/voidgrowth_planks"
+    },
+    "type=top": {
+      "model": "voidweaponry:block/voidgrowth_slab_top"
+    }
+  }
+}

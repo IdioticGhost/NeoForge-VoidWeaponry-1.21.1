@@ -39,6 +39,14 @@ public class ModBiomeModifiers {
 
     public static final ResourceKey<BiomeModifier> ADD_ROTATED_SAND = registerKey("add_rotated_sand");
 
+    public static final ResourceKey<BiomeModifier> ADD_STAR_BERRY = registerKey("add_star_berry");
+
+    public static final ResourceKey<BiomeModifier> ADD_DIRT_LEAF = registerKey("add_dirt_leaf");
+
+    public static final ResourceKey<BiomeModifier> ADD_FIREFLY_GRASS = registerKey("add_firefly_grass");
+
+    public static final ResourceKey<BiomeModifier> ADD_ROTATED_HARDENED_DIRT = registerKey("add_rotated_hardened_dirt");
+
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeature = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
@@ -101,6 +109,26 @@ public class ModBiomeModifiers {
         context.register(ADD_ROTATED_SAND, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(ModBiomes.CORAL_WASTES), biomes.getOrThrow(ModBiomes.FORGOTTEN_BEACH), biomes.getOrThrow(ModBiomes.DRIED_DEPTHS)),
                 HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.ROTATED_SAND_PLACED_KEY)),
+                GenerationStep.Decoration.TOP_LAYER_MODIFICATION));
+
+        context.register(ADD_STAR_BERRY, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.SHROUDED_FOREST)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.STAR_BERRY_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_DIRT_LEAF, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.SHROUDED_FOREST)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.ROTATED_DIRT_LEAF_PLACED_KEY)),
+                GenerationStep.Decoration.TOP_LAYER_MODIFICATION));
+
+        context.register(ADD_FIREFLY_GRASS, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.SHROUDED_FOREST)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.FIREFLY_GRASS_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_ROTATED_HARDENED_DIRT, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.SHROUDED_FOREST)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.ROTATED_HARDENED_DIRT_PLACED_KEY)),
                 GenerationStep.Decoration.TOP_LAYER_MODIFICATION));
 
     }

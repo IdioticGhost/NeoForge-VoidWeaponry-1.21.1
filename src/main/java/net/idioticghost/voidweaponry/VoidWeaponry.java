@@ -118,6 +118,7 @@ public class VoidWeaponry {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.VOID_CRAFTER.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.DEAD_GRASS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHORT_DEAD_GRASS.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.STAR_VINE.get(), RenderType.cutout());
             ModItemProperties.addCustomItemProperties();
         }
 
@@ -125,6 +126,7 @@ public class VoidWeaponry {
         public static void registerParticleProvider(RegisterParticleProvidersEvent event) {
             event.registerSpriteSet(ModParticles.VOID_WATCHER_PARTICLES.get(), VoidWatcherParticles.Provider::new);
             event.registerSpriteSet(ModParticles.GOLD_PARTICLES.get(), GoldParticles.Provider::new);
+            event.registerSpriteSet(ModParticles.FIREFLY_PARTICLES.get(), GoldParticles.Provider::new);
         }
 
         @SubscribeEvent

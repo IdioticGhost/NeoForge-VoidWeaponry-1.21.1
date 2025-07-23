@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "clicked=false,hanging=false,waterlogged=false": {
+      "model": "voidweaponry:block/void_lantern_off"
+    },
+    "clicked=false,hanging=false,waterlogged=true": {
+      "model": "voidweaponry:block/void_lantern_off"
+    },
+    "clicked=false,hanging=true,waterlogged=false": {
+      "model": "voidweaponry:block/void_lantern_off"
+    },
+    "clicked=false,hanging=true,waterlogged=true": {
+      "model": "voidweaponry:block/void_lantern_off"
+    },
+    "clicked=true,hanging=false,waterlogged=false": {
+      "model": "voidweaponry:block/void_lantern_on"
+    },
+    "clicked=true,hanging=false,waterlogged=true": {
+      "model": "voidweaponry:block/void_lantern_on"
+    },
+    "clicked=true,hanging=true,waterlogged=false": {
+      "model": "voidweaponry:block/void_lantern_on"
+    },
+    "clicked=true,hanging=true,waterlogged=true": {
+      "model": "voidweaponry:block/void_lantern_on"
+    }
+  }
+}

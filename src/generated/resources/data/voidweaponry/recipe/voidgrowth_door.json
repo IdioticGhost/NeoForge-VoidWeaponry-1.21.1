@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "voidgrowth",
+  "key": {
+    "#": {
+      "item": "voidweaponry:voidgrowth_planks"
+    }
+  },
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 3,
+    "id": "voidweaponry:voidgrowth_door"
+  }
+}

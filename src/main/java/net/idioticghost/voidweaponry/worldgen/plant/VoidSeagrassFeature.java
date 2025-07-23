@@ -22,13 +22,12 @@ public class VoidSeagrassFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos origin = context.origin();
         RandomSource random = context.random();
 
-        // Try placing 4 seagrass blocks in a cluster
         int placed = 0;
         for (int i = 0; i < 8 && placed < 4; i++) {
             BlockPos offsetPos = origin.offset(
-                    random.nextInt(3) - 1, // X offset: -1, 0, or +1
+                    random.nextInt(3) - 1,
                     0,
-                    random.nextInt(3) - 1  // Z offset: -1, 0, or +1
+                    random.nextInt(3) - 1
             );
 
             BlockPos ground = findGround(level, offsetPos);

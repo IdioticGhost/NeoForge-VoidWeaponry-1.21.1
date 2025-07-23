@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "voidweaponry:block/dirt_leaf_block" },
+    "facing=east": { "model": "voidweaponry:block/dirt_leaf_block", "y": 90 },
+    "facing=south": { "model": "voidweaponry:block/dirt_leaf_block", "y": 180 },
+    "facing=west": { "model": "voidweaponry:block/dirt_leaf_block", "y": 270 }
+  }
+}
