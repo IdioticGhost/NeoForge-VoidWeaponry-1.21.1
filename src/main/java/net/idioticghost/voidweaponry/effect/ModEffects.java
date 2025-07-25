@@ -18,15 +18,15 @@ public class ModEffects {
 
     public static final Holder<MobEffect> MIASMA_RESISTANCE =
             MOB_EFFECTS.register("miasma_resistance",
-                    () -> new VoidMiasmaEffect(MobEffectCategory.BENEFICIAL, 0));
+                    () -> new MiasmaResistanceEffect(MobEffectCategory.BENEFICIAL, 0));
 
     public static final Holder<MobEffect> MIASMA_SHIELDED =
             MOB_EFFECTS.register("miasma_shielded",
-                    () -> new VoidMiasmaEffect(MobEffectCategory.BENEFICIAL, 0xE9B115));
+                    () -> new MiasmaShielded(MobEffectCategory.BENEFICIAL, 0xE9B115));
 
     public static final Holder<MobEffect> UNKILLABLE =
             MOB_EFFECTS.register("unkillable",
-                    () -> new VoidMiasmaEffect(MobEffectCategory.BENEFICIAL, 0xE9B115));
+                    () -> new UnkillableEffect());
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

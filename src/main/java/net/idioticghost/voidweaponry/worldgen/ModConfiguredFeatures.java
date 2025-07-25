@@ -74,6 +74,10 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> ROTATED_HARDENED_DIRT_KEY = registerKey("rotated_hardened_dirt_key");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LEAF_PILE_KEY = registerKey("leaf_pile_key");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ASHEN_TRUNK_KEY = registerKey("ashen_trunk");
+
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest voidReplaceables = new BlockMatchTest(Blocks.END_STONE);
 
@@ -185,6 +189,20 @@ public class ModConfiguredFeatures {
                 new ConfiguredFeature<>(
                         ModFeatures.ROTATED_HARDENED_DIRT.get(),
                         NoneFeatureConfiguration.INSTANCE)
+        );
+
+        context.register(
+                LEAF_PILE_KEY,
+                new ConfiguredFeature<>(
+                        ModFeatures.LEAF_PILE.get(),
+                        NoneFeatureConfiguration.INSTANCE)
+        );
+
+        context.register(ASHEN_TRUNK_KEY,
+                new ConfiguredFeature<>(
+                        ModFeatures.ASHEN_TRUNK.get(),
+                        new BlockStateConfiguration(Blocks.SMOOTH_BASALT.defaultBlockState())
+                )
         );
     }
 

@@ -226,7 +226,7 @@ public class ModBiomes {
 
         //globalOverworldGeneration(biomeBuilder);
         //BiomeDefaultFeatures.addForestFlowers(biomeBuilder);
-        //BiomeDefaultFeatures.addFerns(biomeBuilder);
+        BiomeDefaultFeatures.addFerns(biomeBuilder);
         //BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         //BiomeDefaultFeatures.addExtraGold(biomeBuilder);
 
@@ -236,7 +236,7 @@ public class ModBiomes {
 //                context.lookup(Registries.PLACED_FEATURE).getOrThrow(ModPlacedFeatures.OBSIDIAN_SPIKE_PLACED_KEY));
 
         //BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
-        //BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)

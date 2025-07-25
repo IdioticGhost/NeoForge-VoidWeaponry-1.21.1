@@ -1,81 +1,32 @@
-//package net.idioticghost.voidweaponry.worldgen.dimension;
-//
-//import com.mojang.datafixers.util.Pair;
-//import net.idioticghost.voidweaponry.VoidWeaponry;
-//import net.idioticghost.voidweaponry.worldgen.biome.ModBiomes;
-//import net.minecraft.core.HolderGetter;
-//import net.minecraft.core.registries.Registries;
-//import net.minecraft.data.worldgen.BootstrapContext;
-//import net.minecraft.resources.ResourceKey;
-//import net.minecraft.resources.ResourceLocation;
-//import net.minecraft.tags.BlockTags;
-//import net.minecraft.util.valueproviders.ConstantInt;
-//import net.minecraft.world.level.Level;
-//import net.minecraft.world.level.biome.*;
-//import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
-//import net.minecraft.world.level.dimension.DimensionType;
-//import net.minecraft.world.level.dimension.LevelStem;
-//import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
-//import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
-//
-//import java.util.List;
-//import java.util.OptionalLong;
-//
-//public class ModDimensions {
-//    public static final ResourceKey<LevelStem> VOIDDIM_KEY = ResourceKey.create(Registries.LEVEL_STEM,
-//            ResourceLocation.fromNamespaceAndPath(VoidWeaponry.MOD_ID, "voiddim"));
-//    public static final ResourceKey<Level> VOIDDIM_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,
-//            ResourceLocation.fromNamespaceAndPath(VoidWeaponry.MOD_ID, "voiddim"));
-//    public static final ResourceKey<DimensionType> VOID_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
-//            ResourceLocation.fromNamespaceAndPath(VoidWeaponry.MOD_ID, "voiddim_type"));
-//
-//
-//
-//
-//    public static void bootstrapType(BootstrapContext<DimensionType> context) {
-//        context.register(VOID_DIM_TYPE, new DimensionType(
-//                OptionalLong.of(12000), // fixedTime
-//                false, // hasSkylight
-//                false, // hasCeiling
-//                false, // ultraWarm
-//                false, // natural
-//                1.0, // coordinateScale
-//                true, // bedWorks
-//                false, // respawnAnchorWorks
-//                0, // minY
-//                256, // height
-//                256, // logicalHeight
-//                BlockTags.INFINIBURN_OVERWORLD, // infiniburn
-//                BuiltinDimensionTypes.OVERWORLD_EFFECTS, // effectsLocation
-//                1.0f, // ambientLight
-//                new DimensionType.MonsterSettings(false, false, ConstantInt.of(0), 0)));
-//    }
-//
-//    public static void bootstrapStem(BootstrapContext<LevelStem> context) {
-//        HolderGetter<Biome> biomeRegistry = context.lookup(Registries.BIOME);
-//        HolderGetter<DimensionType> dimTypes = context.lookup(Registries.DIMENSION_TYPE);
-//        HolderGetter<NoiseGeneratorSettings> noiseGenSettings = context.lookup(Registries.NOISE_SETTINGS);
-//
-//        NoiseBasedChunkGenerator wrappedChunkGenerator = new NoiseBasedChunkGenerator(
-//                new FixedBiomeSource(biomeRegistry.getOrThrow(ModBiomes.DRIED_DEPTHS)),
-//                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.OVERWORLD));
-//
-//        NoiseBasedChunkGenerator noiseBasedChunkGenerator = new NoiseBasedChunkGenerator(
-//                MultiNoiseBiomeSource.createFromList(
-//                        new Climate.ParameterList<>(List.of(Pair.of(
-//                                        Climate.parameters(0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomeRegistry.getOrThrow(ModBiomes.DRIED_DEPTHS)),
-//                                Pair.of(
-//                                        Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomeRegistry.getOrThrow(ModBiomes.CORAL_WASTES)),
-////                                Pair.of(
-////                                        Climate.parameters(0.3F, 0.6F, 0.1F, 0.1F, 0.0F, 0.0F, 0.0F), biomeRegistry.getOrThrow(Biomes.OCEAN)),
-//                                Pair.of(
-//                                        Climate.parameters(0.4F, 0.3F, 0.2F, 0.1F, 0.0F, 0.0F, 0.0F), biomeRegistry.getOrThrow(Biomes.DARK_FOREST))
-//
-//                        ))),
-//                noiseGenSettings.getOrThrow(NoiseGeneratorSettings.OVERWORLD));
-//
-//        LevelStem stem = new LevelStem(dimTypes.getOrThrow(ModDimensions.VOID_DIM_TYPE), noiseBasedChunkGenerator);
-//
-//        context.register(VOIDDIM_KEY, stem);
-//    }
-//}
+package net.idioticghost.voidweaponry.worldgen.dimension;
+
+import net.idioticghost.voidweaponry.VoidWeaponry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.dimension.LevelStem;
+
+public class ModDimensions {
+    public static final ResourceKey<Level> EVOLVING_VOID_LEVEL_KEY = ResourceKey.create(
+            Registries.DIMENSION,
+            ResourceLocation.fromNamespaceAndPath("voidweaponry", "evolvingvoid")
+    );
+
+    public static final ResourceKey<DimensionType> EVOLVING_VOID_TYPE_KEY = ResourceKey.create(
+            Registries.DIMENSION_TYPE,
+            ResourceLocation.fromNamespaceAndPath("voidweaponry", "evolvingvoid_type")
+    );
+
+
+    public static final ResourceKey<Level> VOID_MAW_LEVEL_KEY = ResourceKey.create(
+            Registries.DIMENSION,
+            ResourceLocation.fromNamespaceAndPath("voidweaponry", "voidmaw")
+    );
+
+    public static final ResourceKey<DimensionType> VOID_MAW_TYPE_KEY = ResourceKey.create(
+            Registries.DIMENSION_TYPE,
+            ResourceLocation.fromNamespaceAndPath("voidweaponry", "voidmaw_type")
+    );
+}

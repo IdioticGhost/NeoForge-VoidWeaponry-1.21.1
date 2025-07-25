@@ -1,0 +1,8 @@
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "package": "net.idioticghost.voidweaponry.mixin",
+  "mixins": [
+    "LevelRendererMixin"
+  ]
+}

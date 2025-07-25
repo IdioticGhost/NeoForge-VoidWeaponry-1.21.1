@@ -47,6 +47,11 @@ public class ModBiomeModifiers {
 
     public static final ResourceKey<BiomeModifier> ADD_ROTATED_HARDENED_DIRT = registerKey("add_rotated_hardened_dirt");
 
+    public static final ResourceKey<BiomeModifier> ADD_LEAF_PILE = registerKey("add_leaf_pile");
+
+    public static final ResourceKey<BiomeModifier> ADD_ASHEN_TRUNK = registerKey("add_ashen_trunk");
+
+
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeature = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
@@ -130,6 +135,16 @@ public class ModBiomeModifiers {
                 HolderSet.direct(biomes.getOrThrow(ModBiomes.SHROUDED_FOREST)),
                 HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.ROTATED_HARDENED_DIRT_PLACED_KEY)),
                 GenerationStep.Decoration.TOP_LAYER_MODIFICATION));
+
+        context.register(ADD_LEAF_PILE, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.SHROUDED_FOREST)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.LEAF_PILE_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_ASHEN_TRUNK, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(ModBiomes.ASHEN_TUNDRA)),
+                HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.ASHEN_TRUNK_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
 
     }
 

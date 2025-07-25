@@ -14,7 +14,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfi
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
-import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -49,6 +48,8 @@ public class ModFeatures {
     public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<ShadowPineFoliagePlacer>> SHADOW_PINE_FOLIAGE_PLACER =
             FOLIAGE_PLACERS.register("shadow_pine_foliage_placer",
                     () -> new FoliagePlacerType<>(ShadowPineFoliagePlacer.CODEC));
+
+
 
     //CORAL
 
@@ -99,4 +100,11 @@ public class ModFeatures {
     public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> ROTATED_HARDENED_DIRT =
             FEATURES.register("rotated_hardened_dirt", () -> new HardenedDirtRotationFeature(NoneFeatureConfiguration.CODEC));
 
+    public static final DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> LEAF_PILE =
+            FEATURES.register("leaf_pile_patch", () -> new LeafPilePatchFeature(NoneFeatureConfiguration.CODEC,
+                    ModBlocks.LEAF_PILE_BLOCK.get().defaultBlockState(),
+                    ModBlocks.HARDENED_DIRT_BLOCK.get().defaultBlockState()));
+
+    public static final DeferredHolder<Feature<?>, Feature<BlockStateConfiguration>> ASHEN_TRUNK =
+            FEATURES.register("ashen_trunk", () -> new AshenTrunkFeature(BlockStateConfiguration.CODEC));
 }

@@ -18,8 +18,7 @@ import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
-import static net.idioticghost.voidweaponry.worldgen.ModConfiguredFeatures.OBSIDIAN_SPIKE_KEY;
-import static net.idioticghost.voidweaponry.worldgen.ModConfiguredFeatures.ROTATED_HARDENED_DIRT_KEY;
+import static net.idioticghost.voidweaponry.worldgen.ModConfiguredFeatures.*;
 
 public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> VOID_ORE_PLACED_KEY = registerKey("void_ore_placed");
@@ -54,7 +53,11 @@ public class ModPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> FIREFLY_GRASS_PLACED_KEY = registerKey("firefly_grass_placed");
 
-    public static final ResourceKey<PlacedFeature> ROTATED_HARDENED_DIRT_PLACED_KEY = registerKey("rotated_hardened_dirt_key");
+    public static final ResourceKey<PlacedFeature> ROTATED_HARDENED_DIRT_PLACED_KEY = registerKey("rotated_hardened_dirt_placed");
+
+    public static final ResourceKey<PlacedFeature> LEAF_PILE_PLACED_KEY = registerKey("leaf_pile_placed");
+
+    public static final ResourceKey<PlacedFeature> ASHEN_TRUNK_PLACED_KEY = registerKey("ash_trunk_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -217,6 +220,26 @@ public class ModPlacedFeatures {
                 context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(ModConfiguredFeatures.ROTATED_HARDENED_DIRT_KEY),
                 List.of(
                         CountPlacement.of(6),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                )
+        );
+
+        register(context, LEAF_PILE_PLACED_KEY,
+                context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(ModConfiguredFeatures.LEAF_PILE_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(16),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                )
+        );
+
+        register(context, ASHEN_TRUNK_PLACED_KEY,
+                context.lookup(Registries.CONFIGURED_FEATURE).getOrThrow(ASHEN_TRUNK_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(1),
                         InSquarePlacement.spread(),
                         PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                         BiomeFilter.biome()

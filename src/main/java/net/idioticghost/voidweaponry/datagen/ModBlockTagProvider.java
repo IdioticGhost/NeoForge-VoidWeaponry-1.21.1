@@ -41,6 +41,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         this.tag(BlockTags.DIRT)
                 .add(ModBlocks.DIRT_LEAF_BLOCK.get())
-                .add(ModBlocks.HARDENED_DIRT_BLOCK.get());
+                .add(ModBlocks.HARDENED_DIRT_BLOCK.get())
+                .add(ModBlocks.LEAF_PILE_BLOCK.get());
     }
 }

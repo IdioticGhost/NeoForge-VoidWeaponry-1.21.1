@@ -17,11 +17,16 @@ import net.idioticghost.voidweaponry.util.ModItemProperties;
 import net.idioticghost.voidweaponry.worldgen.ModFeatures;
 //import net.idioticghost.voidweaponry.worldgen.biome.ModTerrablender;
 import net.idioticghost.voidweaponry.worldgen.biome.surface.ModSurfaceRules;
+import net.idioticghost.voidweaponry.worldgen.dimension.ModDimensions;
+import net.idioticghost.voidweaponry.worldgen.dimension.VoidMawDimensionEffects;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import org.slf4j.Logger;
@@ -38,6 +43,8 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import terrablender.api.SurfaceRuleManager;
+import net.minecraft.client.renderer.DimensionSpecialEffects;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -79,8 +86,11 @@ public class VoidWeaponry {
         ModFeatures.FEATURES.register(modEventBus);
         ModFeatures.TRUNK_PLACERS.register(modEventBus);
         ModFeatures.FOLIAGE_PLACERS.register(modEventBus);
-        //ModTerrablender.registerBiomes();
 
+
+
+
+        //ModTerrablender.registerBiomes();
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -120,6 +130,16 @@ public class VoidWeaponry {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHORT_DEAD_GRASS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.STAR_VINE.get(), RenderType.cutout());
             ModItemProperties.addCustomItemProperties();
+        }
+
+
+        @SubscribeEvent
+        @OnlyIn(Dist.CLIENT)
+        public static void onRegisterDimensionEffects(RegisterDimensionSpecialEffectsEvent event) {
+            event.register(
+                    ModDimensions.VOID_MAW_LEVEL_KEY.location(),
+                    new VoidMawDimensionEffects()
+            );
         }
 
         @SubscribeEvent

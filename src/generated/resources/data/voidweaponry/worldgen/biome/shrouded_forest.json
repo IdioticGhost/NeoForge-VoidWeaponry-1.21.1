@@ -26,7 +26,22 @@
     "water_color": 0,
     "water_fog_color": 12524326
   },
-  "features": [],
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:patch_large_fern",
+      "minecraft:patch_sugar_cane",
+      "minecraft:patch_pumpkin"
+    ]
+  ],
   "has_precipitation": true,
   "spawn_costs": {},
   "spawners": {

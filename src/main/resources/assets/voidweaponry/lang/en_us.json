@@ -102,7 +102,7 @@
   "creativetab.voidweaponry.void_weapons_tab": "§8Void's Arsenal",
 
   "item.voidweaponry.death_bow": "§6Death Bow",
-  "tooltip.voidweaponry.death_bow_1.tooltip": "§8[]     []     []",
+  "tooltip.voidweaponry.death_bow_1.tooltip": "§8[+]  [+]  [+]  [+]",
   "tooltip.voidweaponry.death_bow_2.tooltip": "",
   "tooltip.voidweaponry.death_bow_3.tooltip": "§6Passive: Bring It Down",
   "tooltip.voidweaponry.death_bow_4.tooltip": "§7Every third hit, apply an additional",
