@@ -1,0 +1,18 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "voidweaponry:item/tempo_katana_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "voidweaponry:item/tempo_katana_2d"
+    },
+    "ground": {
+      "parent": "voidweaponry:item/tempo_katana_2d"
+    },
+    "fixed": {
+      "parent": "voidweaponry:item/tempo_katana_2d"
+    }
+  }
+}

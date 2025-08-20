@@ -28,6 +28,26 @@ public class ModEffects {
             MOB_EFFECTS.register("unkillable",
                     () -> new UnkillableEffect());
 
+    public static final Holder<MobEffect> PARRY =
+            MOB_EFFECTS.register("parry",
+                    () -> new ParryEffect());
+
+    public static final Holder<MobEffect> TEMPO =
+            MOB_EFFECTS.register("tempo",
+                    () -> new MasterfulTempoEffect(MobEffectCategory.BENEFICIAL,0));
+
+    public static final Holder<MobEffect> CHANNELING =
+            MOB_EFFECTS.register("channeling",
+                    () -> new ChannelingEffect(MobEffectCategory.NEUTRAL,0));
+
+    public static final Holder<MobEffect> FROSTBITE =
+            MOB_EFFECTS.register("frostbite",
+                    () -> new FrostbiteEffect());
+
+    public static final Holder<MobEffect> ELECTROCUTION =
+            MOB_EFFECTS.register("electrocution",
+                    () -> new ElectrocutionEffect());
+
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);
     }

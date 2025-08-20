@@ -88,6 +88,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.VOIDGOLD_SMITHING_TEMPLATE.get());
 
                         output.accept(ModItems.DEATH_BOW.get());
+                        output.accept(ModItems.MAELSTROM_KATANA.get());
+                        output.accept(ModItems.TEMPO_KATANA.get());
+                        output.accept(ModItems.MOONLIGHT_GREATSWORD.get());
+                        output.accept(ModItems.DRAGON_KATANA.get());
+                        output.accept(ModItems.LIGHTNING_CROSSBOW.get());
+                        output.accept(ModItems.BLACKHOLE_KNIFE.get());
                     }).build());
 
 

@@ -3,13 +3,16 @@ package net.idioticghost.voidweaponry;
 import net.idioticghost.voidweaponry.block.ModBlocks;
 import net.idioticghost.voidweaponry.block.entity.ModBlockEntities;
 import net.idioticghost.voidweaponry.block.entity.client.VoidCrafterRenderer;
+import net.idioticghost.voidweaponry.client.ModKeybinds;
 import net.idioticghost.voidweaponry.effect.ModEffects;
 import net.idioticghost.voidweaponry.entity.ModEntities;
 import net.idioticghost.voidweaponry.entity.custom.DeathArrowEntityHitInfo;
 import net.idioticghost.voidweaponry.entity.renderer.DeathArrowRenderer;
+import net.idioticghost.voidweaponry.entity.renderer.MaelstromRingRenderer;
 import net.idioticghost.voidweaponry.item.ModItems;
 import net.idioticghost.voidweaponry.particle.ModParticles;
 import net.idioticghost.voidweaponry.particle.custom.GoldParticles;
+import net.idioticghost.voidweaponry.particle.custom.RedParticles;
 import net.idioticghost.voidweaponry.particle.custom.VoidWatcherParticles;
 import net.idioticghost.voidweaponry.screen.ModMenuTypes;
 import net.idioticghost.voidweaponry.screen.custom.VoidCrafterScreen;
@@ -23,12 +26,10 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.RegisterDimensionSpecialEffectsEvent;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.client.event.*;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -63,8 +64,6 @@ public class VoidWeaponry {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
-
-
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
@@ -86,8 +85,6 @@ public class VoidWeaponry {
         ModFeatures.FEATURES.register(modEventBus);
         ModFeatures.TRUNK_PLACERS.register(modEventBus);
         ModFeatures.FOLIAGE_PLACERS.register(modEventBus);
-
-
 
 
         //ModTerrablender.registerBiomes();
@@ -130,6 +127,8 @@ public class VoidWeaponry {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHORT_DEAD_GRASS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.STAR_VINE.get(), RenderType.cutout());
             ModItemProperties.addCustomItemProperties();
+
+            ModKeybinds.registerKeybinds(event);
         }
 
 
@@ -146,7 +145,7 @@ public class VoidWeaponry {
         public static void registerParticleProvider(RegisterParticleProvidersEvent event) {
             event.registerSpriteSet(ModParticles.VOID_WATCHER_PARTICLES.get(), VoidWatcherParticles.Provider::new);
             event.registerSpriteSet(ModParticles.GOLD_PARTICLES.get(), GoldParticles.Provider::new);
-            event.registerSpriteSet(ModParticles.FIREFLY_PARTICLES.get(), GoldParticles.Provider::new);
+            event.registerSpriteSet(ModParticles.RED_PARTICLES.get(), RedParticles.Provider::new);
         }
 
         @SubscribeEvent
@@ -162,6 +161,19 @@ public class VoidWeaponry {
         @SubscribeEvent
         public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(ModEntities.DEATH_ARROW.get(), DeathArrowRenderer::new);
+            event.registerEntityRenderer(ModEntities.MAELSTROM_RING.get(), MaelstromRingRenderer::new);
+        }
+    }
+
+    @EventBusSubscriber(modid = "voidweaponry", value = Dist.CLIENT)
+    public class KeyInputHandler {
+
+        @SubscribeEvent
+        public static void onKeyInput(InputEvent.Key event) {
+            if (ModKeybinds.ABILITY_KEY != null && ModKeybinds.ABILITY_KEY.consumeClick()) {
+                // Your action here
+                System.out.println("Ability key pressed!");
+            }
         }
     }
 }

@@ -2,6 +2,7 @@ package net.idioticghost.voidweaponry.item.custom;
 
 import net.idioticghost.voidweaponry.entity.ModEntities;
 import net.idioticghost.voidweaponry.entity.custom.DeathArrowEntity;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -13,6 +14,9 @@ import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+
+import java.util.function.Consumer;
 
 public class DeathBowItem extends BowItem {
     public DeathBowItem(Properties properties) {

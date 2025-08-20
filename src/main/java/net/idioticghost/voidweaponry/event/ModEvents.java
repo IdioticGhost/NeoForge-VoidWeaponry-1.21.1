@@ -4,6 +4,7 @@ package net.idioticghost.voidweaponry.event;
 import net.idioticghost.voidweaponry.VoidWeaponry;
 import net.idioticghost.voidweaponry.item.ModItems;
 import net.idioticghost.voidweaponry.item.ModToolTiers;
+import net.idioticghost.voidweaponry.item.custom.MaelstromItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
@@ -44,5 +45,6 @@ public class ModEvents {
                 player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 2, 0, true, false));
             }
         }
+            MaelstromItem.handleHoldParticles(player);
     }
 }

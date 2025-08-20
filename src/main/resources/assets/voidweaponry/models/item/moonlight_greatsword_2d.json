@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "voidweaponry:item/moonlight_greatsword_2d"
+  }
+}

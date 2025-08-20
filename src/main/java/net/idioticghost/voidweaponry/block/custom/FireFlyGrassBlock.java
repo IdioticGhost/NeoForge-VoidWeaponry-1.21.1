@@ -28,7 +28,5 @@ public class FireFlyGrassBlock extends GrassBlock {
         double dx = (random.nextDouble() - 0.5) * 0.01;
         double dy = (random.nextDouble() - 0.5) * 0.01;
         double dz = (random.nextDouble() - 0.5) * 0.01;
-
-        level.addParticle(ModParticles.FIREFLY_PARTICLES.get(), x, y, z, dx, dy, dz);
      }
 }
