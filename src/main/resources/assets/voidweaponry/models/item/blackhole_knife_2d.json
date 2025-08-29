@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "voidweaponry:item/dragon_katana_2d"
+    "layer0": "voidweaponry:item/blackhole_knife_2d"
   }
 }

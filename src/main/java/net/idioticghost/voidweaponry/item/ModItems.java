@@ -2,10 +2,15 @@ package net.idioticghost.voidweaponry.item;
 
 import net.idioticghost.voidweaponry.VoidWeaponry;
 import net.idioticghost.voidweaponry.block.ModBlocks;
+import net.idioticghost.voidweaponry.component.ModDataComponents;
 import net.idioticghost.voidweaponry.item.custom.*;
+import net.idioticghost.voidweaponry.util.ItemComponents;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -123,37 +128,16 @@ public class ModItems {
 
     public static final DeferredItem<Item> DEATH_BOW = ITEMS.register("death_bow",
             () -> new DeathBowItem(new Item.Properties().durability(500)) {
-                @Override
-                public void appendHoverText(ItemStack stack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-                    // Only show custom tooltips, no super call
-                    for (int i = 1; i <= 11; i++) {
-                        pTooltipComponents.add(Component.translatable("tooltip.voidweaponry.death_bow_" + i + ".tooltip"));
-                    }
-                }
             });
 
     public static final DeferredItem<Item> MAELSTROM_KATANA = ITEMS.register("maelstrom_katana",
             () -> new MaelstromItem(ModToolTiers.VOIDARTIFACT, new Item.Properties().
                     attributes(MaelstromItem.createAttributes(ModToolTiers.VOIDARTIFACT, 3, -2.4f))) {
-                @Override
-                public void appendHoverText(ItemStack stack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-                    // Only show custom tooltips, no super call
-                    for (int i = 1; i <= 13; i++) {
-                        pTooltipComponents.add(Component.translatable("tooltip.voidweaponry.maelstrom_katana_" + i + ".tooltip"));
-                    }
-                }
             });
 
     public static final DeferredItem<Item> TEMPO_KATANA = ITEMS.register("tempo_katana",
             () -> new TempoItem(ModToolTiers.VOIDARTIFACT, new Item.Properties().
                     attributes(TempoItem.createAttributes(ModToolTiers.VOIDARTIFACT, 3, -2.4f))) {
-                @Override
-                public void appendHoverText(ItemStack stack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-                    // Only show custom tooltips, no super call
-                    for (int i = 1; i <= 14; i++) {
-                        pTooltipComponents.add(Component.translatable("tooltip.voidweaponry.tempo_katana_" + i + ".tooltip"));
-                    }
-                }
             });
 
 
@@ -167,27 +151,22 @@ public class ModItems {
                 }});
 
     public static final DeferredItem<Item> DRAGON_KATANA = ITEMS.register("dragon_katana",
-            () -> new SwordItem(ModToolTiers.VOIDGOLD, new Item.Properties().
-                    attributes(SwordItem.createAttributes(ModToolTiers.VOIDGOLD, 3, -2.4f))) {
-                @Override
-                public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-                    pTooltipComponents.add(Component.translatable("tooltip.voidweaponry.dragon_katana_1.tooltip"));
-                    pTooltipComponents.add(Component.translatable("tooltip.voidweaponry.dragon_katana_2.tooltip"));
-                }});
+            () -> new DragonKatanaItem(ModToolTiers.VOIDGOLD, new Item.Properties().
+                    attributes(DragonKatanaItem.createAttributes(ModToolTiers.VOIDGOLD, 3, -2.4f)))
+                );
 
     public static final DeferredItem<Item> LIGHTNING_CROSSBOW = ITEMS.register("lightning_crossbow",
             () -> new CrossbowItem(new Item.Properties().durability(500)) {
                 });
 
     public static final DeferredItem<Item> BLACKHOLE_KNIFE = ITEMS.register("blackhole_knife",
-            () -> new SwordItem(ModToolTiers.VOIDARTIFACT, new Item.Properties().
-                    attributes(SwordItem.createAttributes(ModToolTiers.VOIDARTIFACT, 3, -2.4f))) {
-                @Override
-                public void appendHoverText(ItemStack stack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-                    for (int i = 1; i <= 17; i++) {
-                        pTooltipComponents.add(Component.translatable("tooltip.voidweaponry.blackhole_knife_" + i + ".tooltip"));
-                    }
-                }
+            () -> {
+                BlackholeKnifeItem item = new BlackholeKnifeItem(ModToolTiers.VOIDARTIFACT,
+                        new Item.Properties()
+                                .attributes(BlackholeKnifeItem.createAttributes(ModToolTiers.VOIDARTIFACT, 3, -2.4f)));
+                ItemStack creativeStack = new ItemStack(item);
+                creativeStack.set(ModDataComponents.KNIFE_VERSION.get(), true);
+                return item;
             });
 
     //ARMOR

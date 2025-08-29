@@ -72,9 +72,6 @@ public class ModItemModelProvider extends net.neoforged.neoforge.client.model.ge
 
         saplingItem(ModBlocks.SHADOW_PINE_SAPLING);
         basicItem(ModItems.STAR_BERRIES.get());
-
-
-        handheldItem(ModItems.BLACKHOLE_KNIFE);
     }
 
     private ItemModelBuilder saplingItem(DeferredBlock<Block> item) {

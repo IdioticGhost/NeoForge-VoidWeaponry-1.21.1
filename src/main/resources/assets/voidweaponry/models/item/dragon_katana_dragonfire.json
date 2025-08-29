@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "neoforge:separate_transforms",
+
+  "base": {
+    "parent": "voidweaponry:item/dragon_katana_3d"
+  },
+
+  "perspectives": {
+    "gui":   { "parent": "voidweaponry:item/dragon_katana_2d_dragonfire" },
+    "ground":{ "parent": "voidweaponry:item/dragon_katana_2d_dragonfire" },
+    "fixed": { "parent": "voidweaponry:item/dragon_katana_2d_dragonfire" }
+  }
+}

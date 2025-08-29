@@ -1,8 +1,10 @@
 package net.idioticghost.voidweaponry.effect;
 
 import net.idioticghost.voidweaponry.VoidWeaponry;
+import net.idioticghost.voidweaponry.particle.ModParticles;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -35,7 +37,6 @@ public class FrostbiteEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(LivingEntity entity, int amplifier) {
-
         // Ensure stacking is capped at 10
         int stacks = Math.min(amplifier + 1, 10);
 
@@ -46,8 +47,18 @@ public class FrostbiteEffect extends MobEffect {
             entity.hasImpulse = false;
         }
 
-        //float tickDamage = entity.getHealth() * 0.001f * stacks;
-        //entity.hurt(entity.damageSources().freeze(), tickDamage);
+        // Spawn particles on server, visible to all clients
+        if (!entity.level().isClientSide) {
+            if (entity.level() instanceof ServerLevel serverLevel) {
+                serverLevel.sendParticles(
+                        ModParticles.FROSTBITTEN_PARTICLES.get(),
+                        entity.getX(), entity.getY() + entity.getBbHeight() * 0.5, entity.getZ(),
+                        2,              // count
+                        0.2, 0.2, 0.2,  // spread (x, y, z)
+                        0.01            // speed
+                );
+            }
+        }
 
         return super.applyEffectTick(entity, amplifier);
     }

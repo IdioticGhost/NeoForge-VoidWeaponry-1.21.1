@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "neoforge:separate_transforms",
+
+  "base": {
+    "parent": "voidweaponry:item/blackhole_knife_3d"
+  },
+
+  "perspectives": {
+    "gui":    {
+      "parent": "voidweaponry:item/blackhole_knife_2d"
+    },
+    "ground": {
+      "parent": "voidweaponry:item/blackhole_knife_2d"
+    },
+    "fixed":  {
+      "parent": "voidweaponry:item/blackhole_knife_2d"
+    }
+  },
+
+  "overrides": [
+    {
+      "predicate": { "voidweaponry:knife_version": 1 },
+      "model": "voidweaponry:item/whitehole_knife"
+    }
+  ]
+}

@@ -4,16 +4,16 @@ import net.idioticghost.voidweaponry.block.ModBlocks;
 import net.idioticghost.voidweaponry.block.entity.ModBlockEntities;
 import net.idioticghost.voidweaponry.block.entity.client.VoidCrafterRenderer;
 import net.idioticghost.voidweaponry.client.ModKeybinds;
+import net.idioticghost.voidweaponry.component.ModDataComponents;
 import net.idioticghost.voidweaponry.effect.ModEffects;
 import net.idioticghost.voidweaponry.entity.ModEntities;
+import net.idioticghost.voidweaponry.entity.client.DragonFireballProjectileModel;
+import net.idioticghost.voidweaponry.entity.client.WhiteholeKnifeProjectileModel;
 import net.idioticghost.voidweaponry.entity.custom.DeathArrowEntityHitInfo;
-import net.idioticghost.voidweaponry.entity.renderer.DeathArrowRenderer;
-import net.idioticghost.voidweaponry.entity.renderer.MaelstromRingRenderer;
+import net.idioticghost.voidweaponry.entity.renderer.*;
 import net.idioticghost.voidweaponry.item.ModItems;
 import net.idioticghost.voidweaponry.particle.ModParticles;
-import net.idioticghost.voidweaponry.particle.custom.GoldParticles;
-import net.idioticghost.voidweaponry.particle.custom.RedParticles;
-import net.idioticghost.voidweaponry.particle.custom.VoidWatcherParticles;
+import net.idioticghost.voidweaponry.particle.custom.*;
 import net.idioticghost.voidweaponry.screen.ModMenuTypes;
 import net.idioticghost.voidweaponry.screen.custom.VoidCrafterScreen;
 import net.idioticghost.voidweaponry.util.ModItemProperties;
@@ -86,6 +86,8 @@ public class VoidWeaponry {
         ModFeatures.TRUNK_PLACERS.register(modEventBus);
         ModFeatures.FOLIAGE_PLACERS.register(modEventBus);
 
+        ModDataComponents.register(modEventBus);
+
 
         //ModTerrablender.registerBiomes();
 
@@ -126,9 +128,10 @@ public class VoidWeaponry {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.DEAD_GRASS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHORT_DEAD_GRASS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.STAR_VINE.get(), RenderType.cutout());
-            ModItemProperties.addCustomItemProperties();
 
-            ModKeybinds.registerKeybinds(event);
+            ModKeybinds.registerKeybinds();
+
+            ModItemProperties.addCustomItemProperties();
         }
 
 
@@ -146,6 +149,10 @@ public class VoidWeaponry {
             event.registerSpriteSet(ModParticles.VOID_WATCHER_PARTICLES.get(), VoidWatcherParticles.Provider::new);
             event.registerSpriteSet(ModParticles.GOLD_PARTICLES.get(), GoldParticles.Provider::new);
             event.registerSpriteSet(ModParticles.RED_PARTICLES.get(), RedParticles.Provider::new);
+            event.registerSpriteSet(ModParticles.DRAGONFIRE_PARTICLES.get(), DragonfireParticles.Provider::new);
+            event.registerSpriteSet(ModParticles.BURNING_PARTICLES.get(), BurningParticles.Provider::new);
+            event.registerSpriteSet(ModParticles.FROSTBITTEN_PARTICLES.get(), FrostbittenParticles.Provider::new);
+            event.registerSpriteSet(ModParticles.ELECTROCUTED_PARTICLES.get(), ElectrocutedParticles.Provider::new);
         }
 
         @SubscribeEvent
@@ -158,22 +165,14 @@ public class VoidWeaponry {
             event.register(ModMenuTypes.VOID_CRAFTER_MENU.get(), VoidCrafterScreen::new);
         }
 
+
         @SubscribeEvent
         public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(ModEntities.DEATH_ARROW.get(), DeathArrowRenderer::new);
             event.registerEntityRenderer(ModEntities.MAELSTROM_RING.get(), MaelstromRingRenderer::new);
-        }
-    }
-
-    @EventBusSubscriber(modid = "voidweaponry", value = Dist.CLIENT)
-    public class KeyInputHandler {
-
-        @SubscribeEvent
-        public static void onKeyInput(InputEvent.Key event) {
-            if (ModKeybinds.ABILITY_KEY != null && ModKeybinds.ABILITY_KEY.consumeClick()) {
-                // Your action here
-                System.out.println("Ability key pressed!");
-            }
+            event.registerEntityRenderer(ModEntities.BLACKHOLE_KNIFE.get(), BlackholeKnifeProjectileRenderer::new);
+            event.registerEntityRenderer(ModEntities.WHITEHOLE_KNIFE.get(), WhiteholeKnifeProjectileRenderer::new);
+            event.registerEntityRenderer(ModEntities.DRAGON_FIREBALL.get(), DragonFireballProjectileRenderer::new);
         }
     }
 }

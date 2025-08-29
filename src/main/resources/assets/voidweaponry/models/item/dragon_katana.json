@@ -1,18 +1,31 @@
 {
   "parent": "minecraft:item/handheld",
   "loader": "neoforge:separate_transforms",
+
   "base": {
     "parent": "voidweaponry:item/dragon_katana_3d"
   },
+
   "perspectives": {
-    "gui": {
-      "parent": "voidweaponry:item/dragon_katana_2d"
+    "gui":    {
+      "parent": "voidweaponry:item/dragon_katana_2d_extinguished"
     },
     "ground": {
-      "parent": "voidweaponry:item/dragon_katana_2d"
+      "parent": "voidweaponry:item/dragon_katana_2d_extinguished"
     },
-    "fixed": {
-      "parent": "voidweaponry:item/dragon_katana_2d"
+    "fixed":  {
+      "parent": "voidweaponry:item/dragon_katana_2d_extinguished"
     }
-  }
+  },
+
+  "overrides": [
+    {
+      "predicate": { "voidweaponry:katana_heat_value": 40 },
+      "model": "voidweaponry:item/dragon_katana_burning"
+    },
+    {
+      "predicate": { "voidweaponry:katana_heat_value": 70 },
+      "model": "voidweaponry:item/dragon_katana_dragonfire"
+    }
+  ]
 }

@@ -21,6 +21,18 @@ public class ModParticles {
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> RED_PARTICLES =
             PARTICLE_TYPES.register("red_particles", () -> new SimpleParticleType(false));
 
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> ELECTROCUTED_PARTICLES =
+            PARTICLE_TYPES.register("electrocuted_particles", () -> new SimpleParticleType(false));
+
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> FROSTBITTEN_PARTICLES =
+            PARTICLE_TYPES.register("frostbitten_particles", () -> new SimpleParticleType(false));
+
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> BURNING_PARTICLES =
+            PARTICLE_TYPES.register("burning_particles", () -> new SimpleParticleType(false));
+
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> DRAGONFIRE_PARTICLES =
+            PARTICLE_TYPES.register("dragonfire_particles", () -> new SimpleParticleType(false));
+
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
     }

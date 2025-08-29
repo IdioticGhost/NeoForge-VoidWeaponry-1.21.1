@@ -28,10 +28,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -39,6 +36,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import org.joml.Vector3f;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.WeakHashMap;
@@ -59,6 +57,14 @@ public class MaelstromItem extends SwordItem {
 
     public MaelstromItem(Tier tier, Properties properties) {
         super(tier, properties);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        // Only show custom tooltips, no super call
+        for (int i = 1; i <= 13; i++) {
+            pTooltipComponents.add(Component.translatable("tooltip.voidweaponry.maelstrom_katana_" + i + ".tooltip"));
+        }
     }
 
     @Override
@@ -105,14 +111,8 @@ public class MaelstromItem extends SwordItem {
         }
     }
 
-    @Override
-    public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
-        if (!(entity instanceof Player player)) return;
-
+    private void finishUse(Player player, Level level, int heldTicks) {
         player.getCooldowns().addCooldown(this, COOLDOWN_TICKS);
-
-        int heldTicks = this.getUseDuration(stack, player) - timeLeft;
-
         if (player.hasEffect(ModEffects.CHANNELING)) {
             player.removeEffect(ModEffects.CHANNELING);
         }
@@ -175,6 +175,13 @@ public class MaelstromItem extends SwordItem {
             pulse.setPos(pos.x, pos.y, pos.z);
             level.addFreshEntity(pulse);
         }
+    }
+
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
+        if (!(entity instanceof Player player)) return;
+        int heldTicks = this.getUseDuration(stack, player) - timeLeft;
+        finishUse(player, level, heldTicks);
     }
 
     private static float particleRotation = 0f;
@@ -270,7 +277,9 @@ public class MaelstromItem extends SwordItem {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (!(attacker instanceof Player player)) return super.hurtEnemy(stack, target, attacker);
+        if (!(attacker instanceof Player player)) {
+            return super.hurtEnemy(stack, target, attacker);
+        }
 
         // Check which effect to apply for this player
         boolean applyFrostbite = true;
@@ -278,14 +287,27 @@ public class MaelstromItem extends SwordItem {
             applyFrostbite = !lastHitWasFrostbite.get(player);
         }
 
-        // Apply the effect
-        if (applyFrostbite) {
-            target.addEffect(new MobEffectInstance(ModEffects.FROSTBITE, 200, 0, false, true));
-        } else {
-            target.addEffect(new MobEffectInstance(ModEffects.ELECTROCUTION, 200, 0, false, true));
+        // Decide which effect we’re applying
+        var chosenEffect = applyFrostbite ? ModEffects.FROSTBITE : ModEffects.ELECTROCUTION;
+
+        int duration = 200; // base duration
+        int amplifier = 0;
+
+        // If the target already has this effect, stack it
+        if (target.hasEffect(chosenEffect)) {
+            var current = target.getEffect(chosenEffect);
+            if (current != null) {
+                amplifier = current.getAmplifier() + 1;
+                duration = Math.max(current.getDuration(), duration);
+            }
         }
 
-        // Record what we just applied
+        amplifier = Math.min(amplifier, 10);
+
+        // Apply the new stacked effect
+        target.addEffect(new MobEffectInstance(chosenEffect, duration, amplifier, false, false, true));
+
+        // Record what we just applied so next swing alternates
         lastHitWasFrostbite.put(player, applyFrostbite);
 
         return super.hurtEnemy(stack, target, attacker);

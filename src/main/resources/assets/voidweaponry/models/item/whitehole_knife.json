@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "neoforge:separate_transforms",
+
+  "base": {
+    "parent": "voidweaponry:item/whitehole_knife_3d"
+  },
+
+  "perspectives": {
+    "gui":   { "parent": "voidweaponry:item/whitehole_knife_2d" },
+    "ground":{ "parent": "voidweaponry:item/whitehole_knife_2d" },
+    "fixed": { "parent": "voidweaponry:item/whitehole_knife_2d" }
+  }
+}

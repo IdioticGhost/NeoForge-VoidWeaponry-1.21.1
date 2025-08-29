@@ -48,6 +48,14 @@ public class ModEffects {
             MOB_EFFECTS.register("electrocution",
                     () -> new ElectrocutionEffect());
 
+    public static final Holder<MobEffect> BURNING =
+            MOB_EFFECTS.register("burning",
+                    () -> new BurningEffect());
+
+    public static final Holder<MobEffect> DRAGONFIRE =
+            MOB_EFFECTS.register("dragonfire",
+                    () -> new DragonfireEffect());
+
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);
     }
