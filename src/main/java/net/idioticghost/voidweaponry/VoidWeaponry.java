@@ -1,5 +1,6 @@
 package net.idioticghost.voidweaponry;
 
+import net.idioticghost.voidweaponry.attribute.ModAttributes;
 import net.idioticghost.voidweaponry.block.ModBlocks;
 import net.idioticghost.voidweaponry.block.entity.ModBlockEntities;
 import net.idioticghost.voidweaponry.block.entity.client.VoidCrafterRenderer;
@@ -85,6 +86,7 @@ public class VoidWeaponry {
         ModFeatures.FEATURES.register(modEventBus);
         ModFeatures.TRUNK_PLACERS.register(modEventBus);
         ModFeatures.FOLIAGE_PLACERS.register(modEventBus);
+        ModAttributes.ATTRIBUTES.register(modEventBus);
 
         ModDataComponents.register(modEventBus);
 

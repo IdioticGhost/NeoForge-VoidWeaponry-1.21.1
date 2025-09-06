@@ -27,7 +27,17 @@ public class ModDataComponents {
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> KATANA_HEAT_VALUE =
             register("katana_heat_value",builder -> builder.persistent(Codec.INT));
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> KATANA_HEAT_CAP =
+            register("katana_heat_cap", builder -> builder.persistent(Codec.INT));
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> KATANA_HEAT_BOOST_TIMER =
+            register("katana_heat_boost_timer", builder -> builder.persistent(Codec.INT));
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> KATANA_HEAT_LAST_THRESHOLD =
+            register("katana_heat_last_threshold", builder -> builder.persistent(Codec.INT));
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> KATANA_HEAT_SPIRAL_TICK =
+            register("katana_heat_spiral_tick", builder -> builder.persistent(Codec.INT));
 
 
     private static <T>DeferredHolder<DataComponentType<?>, DataComponentType<T>> register(String name,

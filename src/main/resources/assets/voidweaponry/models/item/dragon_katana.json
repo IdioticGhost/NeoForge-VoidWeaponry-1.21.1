@@ -26,6 +26,10 @@
     {
       "predicate": { "voidweaponry:katana_heat_value": 70 },
       "model": "voidweaponry:item/dragon_katana_dragonfire"
+    },
+    {
+      "predicate": { "voidweaponry:katana_heat_value": 111 },
+      "model": "voidweaponry:item/dragon_katana_hottest"
     }
   ]
 }

@@ -31,7 +31,7 @@ public class DragonfireEffect extends MobEffect {
                 serverLevel.sendParticles(
                         ModParticles.DRAGONFIRE_PARTICLES.get(),
                         entity.getX(), entity.getY() + entity.getBbHeight() * 0.5, entity.getZ(),
-                        6,            // count
+                        3,            // count
                         0.2, 0.2, 0.2, // spread (x, y, z)
                         0.01           // speed
                 );

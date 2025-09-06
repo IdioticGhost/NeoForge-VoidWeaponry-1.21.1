@@ -121,13 +121,12 @@ public class BlackholeKnifeItem extends SwordItem {
 
                     blackKnife.startSelfDestruct(140, () -> {
                         if (player != null) {
-                            // Find the knife in the inventory
                             for (int i = 0; i < player.getInventory().items.size(); i++) {
                                 ItemStack stack = player.getInventory().items.get(i);
                                 if (stack.is(ModItems.BLACKHOLE_KNIFE.get())) {
                                     stack.set(ModDataComponents.KNIFE_VERSION.get(), !knifeVersion);
                                     stack.set(ModDataComponents.THREW_KNIFE.get(), false);
-                                    break; // stop after updating the first match
+                                    break;
                                 }
                             }
 
